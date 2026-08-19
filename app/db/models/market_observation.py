@@ -2,7 +2,7 @@
 
 from datetime import datetime, timezone
 from sqlalchemy import (
-    BigInteger, Date, DateTime, ForeignKey, Index, Integer, Numeric, String, UniqueConstraint,
+    Date, DateTime, ForeignKey, Index, Integer, Numeric, String, UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
@@ -21,7 +21,7 @@ class MarketObservation(Base):
         ),
     )
 
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     market_id: Mapped[int] = mapped_column(Integer, ForeignKey("markets.id"), nullable=False)
     commodity_id: Mapped[int] = mapped_column(Integer, ForeignKey("commodities.id"), nullable=False)
     observation_date: Mapped[datetime] = mapped_column(Date, nullable=False)

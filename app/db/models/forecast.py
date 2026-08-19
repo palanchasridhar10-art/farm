@@ -1,7 +1,7 @@
 """Forecast ORM model."""
 
 from datetime import datetime, timezone
-from sqlalchemy import BigInteger, Date, DateTime, ForeignKey, Integer, Numeric, String
+from sqlalchemy import Date, DateTime, ForeignKey, Integer, Numeric, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 
@@ -9,7 +9,7 @@ from app.db.base import Base
 class Forecast(Base):
     __tablename__ = "forecasts"
 
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     market_id: Mapped[int] = mapped_column(Integer, ForeignKey("markets.id"), nullable=False)
     commodity_id: Mapped[int] = mapped_column(Integer, ForeignKey("commodities.id"), nullable=False)
     forecast_date: Mapped[datetime] = mapped_column(Date, nullable=False)
