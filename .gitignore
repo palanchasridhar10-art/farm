@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment
+.env
+.venv
+venv/
+env/
+
+# Database
+*.db
+*.sqlite3
+
+# ML artifacts
+models/artifacts/*.joblib
+models/artifacts/*.pkl
+
+# Data
+data/raw/
+data/processed/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ruff
+.ruff_cache/
+
+# Misc
+*.log

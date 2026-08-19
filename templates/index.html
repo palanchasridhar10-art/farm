@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Farmer Market AI — Telangana Agricultural Price Intelligence</title>
+  <meta name="description" content="AI-powered agricultural market price predictions, trends, and comparisons for Telangana farmers. Covers Nizamabad, Karimnagar, Warangal, Nalgonda, Khammam."/>
+  <link rel="stylesheet" href="/static/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">🌾</span>
+      <div>
+        <h1>Farmer Market AI</h1>
+        <span>Telangana Agricultural Price Intelligence</span>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="sel-district">
+        <option value="nalgonda">Nalgonda</option>
+        <option value="nizamabad">Nizamabad</option>
+        <option value="karimnagar">Karimnagar</option>
+        <option value="warangal">Warangal</option>
+        <option value="khammam">Khammam</option>
+      </select>
+      <select id="sel-commodity">
+        <option value="tomato">🍅 Tomato</option>
+        <option value="cotton">🌿 Cotton</option>
+        <option value="turmeric">🟡 Turmeric</option>
+        <option value="paddy">🌾 Paddy</option>
+        <option value="maize">🌽 Maize</option>
+        <option value="red chilli">🌶️ Red Chilli</option>
+        <option value="onion">🧅 Onion</option>
+        <option value="groundnut">🥜 Groundnut</option>
+        <option value="bengal gram">🫘 Bengal Gram</option>
+        <option value="red gram">🫘 Red Gram</option>
+      </select>
+      <select id="sel-lang">
+        <option value="en">English</option>
+        <option value="te">తెలుగు</option>
+      </select>
+      <button class="btn-chat" onclick="toggleChat()">💬 Ask AI</button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- KPI CARDS -->
+  <div class="kpi-grid" id="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Latest Modal Price</div>
+      <div class="kpi-value green" id="kpi-price">—</div>
+      <div class="kpi-sub" id="kpi-market">Loading...</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Price Range</div>
+      <div class="kpi-value blue" id="kpi-range">—</div>
+      <div class="kpi-sub" id="kpi-unit">INR/quintal</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">7-Day Trend</div>
+      <div class="kpi-value orange" id="kpi-trend">—</div>
+      <div class="kpi-sub" id="kpi-trend-label">Calculating...</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">7-Day Forecast</div>
+      <div class="kpi-value purple" id="kpi-forecast">—</div>
+      <div class="kpi-sub" id="kpi-confidence">ML estimate</div>
+    </div>
+  </div>
+
+  <!-- FRESHNESS -->
+  <div style="margin-bottom:18px;">
+    <span class="freshness" id="freshness-badge">⏳ Loading data freshness...</span>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>📈 Price History (30 Days)</h3>
+      <canvas id="chart-history"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>🔮 Forecast (Next 7 Days)</h3>
+      <canvas id="chart-forecast"></canvas>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📊</span> District Comparison</div>
+    <div class="compare-card">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>District</th>
+            <th>Market</th>
+            <th>Current Price</th>
+            <th>7-Day Forecast</th>
+            <th>Confidence</th>
+          </tr>
+        </thead>
+        <tbody id="compare-body">
+          <tr><td colspan="6" class="loading"><div class="spinner"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<!-- CHAT OVERLAY -->
+<div class="chat-overlay" id="chat-overlay">
+  <div class="chat-header">
+    <h3>🤖 Farmer Market AI Assistant</h3>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-prompts">
+    <button class="quick-prompt" onclick="sendQuick('tomato price in Nalgonda')">🍅 Tomato price</button>
+    <button class="quick-prompt" onclick="sendQuick('cotton forecast')">🌿 Cotton forecast</button>
+    <button class="quick-prompt" onclick="sendQuick('compare tomato markets')">📊 Compare markets</button>
+    <button class="quick-prompt" onclick="sendQuick('best market for paddy')">🏆 Best market</button>
+    <button class="quick-prompt" onclick="sendQuick('నల్గొండలో టమాటా ధర ఎంత?')">🗣️ Telugu</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <form class="chat-input" id="chat-form" onsubmit="return sendChat(event)">
+    <select id="chat-lang">
+      <option value="en">EN</option>
+      <option value="te">తెలు</option>
+    </select>
+    <input id="chat-input" placeholder="Ask about any crop price..." autocomplete="off"/>
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>🌾 Farmer Market AI — AI-Based Agricultural Price Prediction System for Telangana</p>
+  <p>Data sourced from APMC/Mandi verified records. Forecasts are ML estimates, not guarantees.</p>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
