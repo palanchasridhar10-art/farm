@@ -205,21 +205,77 @@ async function loadHistory(commodity, district, market) {
       data: {
         labels,
         datasets: [
-          { label: 'Modal Price', data: modal, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', fill: false, tension: 0.3, pointRadius: 1 },
-          { label: 'Min', data: minP, borderColor: 'rgba(59,130,246,0.4)', borderDash: [4,4], fill: false, tension: 0.3, pointRadius: 0 },
-          { label: 'Max', data: maxP, borderColor: 'rgba(168,85,247,0.4)', borderDash: [4,4], fill: false, tension: 0.3, pointRadius: 0 },
+          {
+            label: 'Modal Price (₹)',
+            data: modal,
+            borderColor: '#16a34a',
+            backgroundColor: 'rgba(22, 163, 74, 0.12)',
+            fill: true,
+            tension: 0.3,
+            borderWidth: 2.5,
+            pointRadius: 2,
+            pointBackgroundColor: '#16a34a',
+          },
+          {
+            label: 'Min Price (₹)',
+            data: minP,
+            borderColor: 'rgba(2, 132, 199, 0.6)',
+            borderDash: [4, 4],
+            fill: false,
+            tension: 0.3,
+            borderWidth: 1.5,
+            pointRadius: 0,
+          },
+          {
+            label: 'Max Price (₹)',
+            data: maxP,
+            borderColor: 'rgba(217, 119, 6, 0.6)',
+            borderDash: [4, 4],
+            fill: false,
+            tension: 0.3,
+            borderWidth: 1.5,
+            pointRadius: 0,
+          },
         ],
       },
       options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: '#8b95a8', font: { size: 11 } } } },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#14532d',
+              font: { size: 11, weight: '600', family: 'Plus Jakarta Sans' },
+              usePointStyle: true,
+            },
+          },
+          tooltip: {
+            backgroundColor: '#14532d',
+            titleColor: '#fef08a',
+            bodyColor: '#ffffff',
+            padding: 10,
+            cornerRadius: 8,
+          },
+        },
         scales: {
-          x: { ticks: { color: '#5a6478', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
-          y: { ticks: { color: '#5a6478', callback: v => '₹'+v.toLocaleString('en-IN') }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          x: {
+            ticks: { color: '#547363', font: { size: 10, weight: '500' } },
+            grid: { color: 'rgba(22, 101, 52, 0.06)' },
+          },
+          y: {
+            ticks: {
+              color: '#547363',
+              font: { size: 10, weight: '500' },
+              callback: v => '₹' + v.toLocaleString('en-IN'),
+            },
+            grid: { color: 'rgba(22, 101, 52, 0.06)' },
+          },
         },
       },
     });
-  } catch (e) { console.error('History chart error:', e); }
+  } catch (e) {
+    console.error('History chart error:', e);
+  }
 }
 
 // ─── FORECAST CHART ───
@@ -230,7 +286,10 @@ async function loadForecast(commodity, district, market) {
     const res = await fetch(url);
     const json = await res.json();
     const forecasts = json.forecasts || [];
-    if (!forecasts.length) { document.getElementById('kpi-forecast').textContent = 'N/A'; return; }
+    if (!forecasts.length) {
+      document.getElementById('kpi-forecast').textContent = 'N/A';
+      return;
+    }
 
     const obs = json.current_observation || {};
     const labels = ['Now', ...forecasts.map(f => `+${f.horizon_days}d`)];
@@ -249,22 +308,80 @@ async function loadForecast(commodity, district, market) {
       data: {
         labels,
         datasets: [
-          { label: 'Predicted', data: pred, borderColor: '#a855f7', backgroundColor: 'rgba(168,85,247,0.1)', fill: false, tension: 0.3, pointRadius: 3 },
-          { label: 'Lower Bound', data: lower, borderColor: 'rgba(59,130,246,0.3)', borderDash: [4,4], fill: false, tension: 0.3, pointRadius: 0 },
-          { label: 'Upper Bound', data: upper, borderColor: 'rgba(245,158,11,0.3)', borderDash: [4,4], fill: '-1', backgroundColor: 'rgba(168,85,247,0.05)', tension: 0.3, pointRadius: 0 },
+          {
+            label: 'Predicted Price (₹)',
+            data: pred,
+            borderColor: '#7c3aed',
+            backgroundColor: 'rgba(124, 58, 237, 0.1)',
+            fill: false,
+            tension: 0.3,
+            borderWidth: 2.5,
+            pointRadius: 4,
+            pointBackgroundColor: '#7c3aed',
+          },
+          {
+            label: 'Lower Bound (₹)',
+            data: lower,
+            borderColor: 'rgba(2, 132, 199, 0.5)',
+            borderDash: [4, 4],
+            fill: false,
+            tension: 0.3,
+            borderWidth: 1.5,
+            pointRadius: 0,
+          },
+          {
+            label: 'Upper Bound (₹)',
+            data: upper,
+            borderColor: 'rgba(217, 119, 6, 0.5)',
+            borderDash: [4, 4],
+            fill: '-1',
+            backgroundColor: 'rgba(124, 58, 237, 0.04)',
+            tension: 0.3,
+            borderWidth: 1.5,
+            pointRadius: 0,
+          },
         ],
       },
       options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: '#8b95a8', font: { size: 11 } } } },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#14532d',
+              font: { size: 11, weight: '600', family: 'Plus Jakarta Sans' },
+              usePointStyle: true,
+            },
+          },
+          tooltip: {
+            backgroundColor: '#14532d',
+            titleColor: '#fef08a',
+            bodyColor: '#ffffff',
+            padding: 10,
+            cornerRadius: 8,
+          },
+        },
         scales: {
-          x: { ticks: { color: '#5a6478' }, grid: { color: 'rgba(255,255,255,0.04)' } },
-          y: { ticks: { color: '#5a6478', callback: v => '₹'+v.toLocaleString('en-IN') }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          x: {
+            ticks: { color: '#547363', font: { size: 10, weight: '500' } },
+            grid: { color: 'rgba(22, 101, 52, 0.06)' },
+          },
+          y: {
+            ticks: {
+              color: '#547363',
+              font: { size: 10, weight: '500' },
+              callback: v => '₹' + v.toLocaleString('en-IN'),
+            },
+            grid: { color: 'rgba(22, 101, 52, 0.06)' },
+          },
         },
       },
     });
-  } catch (e) { console.error('Forecast chart error:', e); }
+  } catch (e) {
+    console.error('Forecast chart error:', e);
+  }
 }
+
 
 // ─── COMPARISON TABLE ───
 async function loadComparison(commodity) {
