@@ -277,29 +277,149 @@ body {
 .kpi-trend.down { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
 .kpi-trend.stable { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
 
-/* ─── CHARTS ─── */
-.chart-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 24px;
+/* ─── PRICE SUMMARY BAR ─── */
+.price-summary {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1.5px solid rgba(34, 197, 94, 0.2);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
 }
+.price-summary-item {
+  flex: 1;
+  padding: 14px 20px;
+  text-align: center;
+  border-right: 1px solid rgba(34, 197, 94, 0.12);
+  transition: background 0.2s;
+}
+.price-summary-item:last-child { border-right: none; }
+.price-summary-item:hover { background: #f0fdf4; }
+.price-summary-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.price-summary-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #14532d;
+}
+.price-summary-value.min-val { color: #0284c7; }
+.price-summary-value.modal-val { color: #15803d; }
+.price-summary-value.max-val { color: #d97706; }
+.price-summary-tag {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* ─── CHART TABS ─── */
+.chart-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.chart-tab {
+  padding: 9px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(34, 197, 94, 0.22);
+  background: var(--bg-card);
+  color: #547363;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  display: flex; align-items: center; gap: 6px;
+}
+.chart-tab:hover {
+  border-color: #16a34a;
+  color: #14532d;
+  background: #f0fdf4;
+}
+.chart-tab.active {
+  background: #14532d;
+  border-color: #14532d;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(20, 83, 45, 0.25);
+}
+
+/* ─── CHARTS ─── */
+.chart-panel { display: none; }
+.chart-panel.active { display: block; }
+
 .chart-card {
   background: var(--bg-card);
   border: 1.5px solid rgba(34, 197, 94, 0.18);
   border-radius: var(--radius);
-  padding: 22px;
-  min-height: 340px;
+  padding: 24px;
   box-shadow: var(--shadow);
+  margin-bottom: 20px;
 }
-.chart-card h3 {
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.chart-card-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 800;
   color: #14532d;
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 8px;
 }
+.chart-card-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #547363;
+  font-weight: 600;
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend-dot.green { background: #16a34a; }
+.legend-dot.purple { background: #7c3aed; }
+.legend-dot.gold { background: #d97706; }
+
+.chart-canvas-wrap {
+  position: relative;
+  height: 280px;
+}
+
+/* ─── TREND INDICATOR ─── */
+.trend-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.trend-tag.up { background: #dcfce7; color: #15803d; }
+.trend-tag.down { background: #fee2e2; color: #b91c1c; }
+.trend-tag.flat { background: #e0f2fe; color: #0369a1; }
 
 /* ─── SECTIONS ─── */
 .section { margin-bottom: 24px; }

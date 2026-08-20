@@ -141,17 +141,76 @@
     </div>
   </div>
 
-  <!-- CHARTS -->
-  <div class="chart-grid">
-    <div class="chart-card">
-      <h3>📈 Price History (30 Days)</h3>
-      <canvas id="chart-history"></canvas>
+  <!-- PRICE SUMMARY BAR -->
+  <div class="price-summary" id="price-summary-bar">
+    <div class="price-summary-item">
+      <div class="price-summary-label">Min Price</div>
+      <div class="price-summary-value min-val" id="ps-min">—</div>
+      <div class="price-summary-tag">Today's lowest</div>
     </div>
-    <div class="chart-card">
-      <h3>🔮 Forecast (Next 7 Days)</h3>
-      <canvas id="chart-forecast"></canvas>
+    <div class="price-summary-item">
+      <div class="price-summary-label">Modal Price</div>
+      <div class="price-summary-value modal-val" id="ps-modal">—</div>
+      <div class="price-summary-tag">Most traded price</div>
+    </div>
+    <div class="price-summary-item">
+      <div class="price-summary-label">Max Price</div>
+      <div class="price-summary-value max-val" id="ps-max">—</div>
+      <div class="price-summary-tag">Today's highest</div>
+    </div>
+    <div class="price-summary-item">
+      <div class="price-summary-label">7-Day Trend</div>
+      <div class="price-summary-value" id="ps-trend" style="font-size:16px">—</div>
+      <div class="price-summary-tag" id="ps-trend-label">Calculating...</div>
     </div>
   </div>
+
+  <!-- CHART TABS -->
+  <div class="chart-tabs">
+    <button class="chart-tab active" id="tab-history" onclick="switchTab('history')">📈 30-Day Price History</button>
+    <button class="chart-tab" id="tab-forecast" onclick="switchTab('forecast')">🔮 7-Day Forecast</button>
+  </div>
+
+  <!-- HISTORY PANEL -->
+  <div class="chart-panel active" id="panel-history">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <div>
+          <div class="chart-card-title">📈 Price History — Last 30 Days</div>
+          <div class="chart-card-subtitle">Modal price trend for selected commodity & market</div>
+        </div>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot green"></span>Modal Price</span>
+          <span class="legend-item" style="color:#0284c7"><span class="legend-dot" style="background:#0284c7"></span>Min</span>
+          <span class="legend-item" style="color:#d97706"><span class="legend-dot gold"></span>Max</span>
+        </div>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-history"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORECAST PANEL -->
+  <div class="chart-panel" id="panel-forecast">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <div>
+          <div class="chart-card-title">🔮 Forecast — Next 7 Days</div>
+          <div class="chart-card-subtitle">AI predicted prices with confidence range</div>
+        </div>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot purple"></span>Predicted</span>
+          <span class="legend-item" style="color:#d97706"><span class="legend-dot gold"></span>Upper Bound</span>
+          <span class="legend-item" style="color:#0284c7"><span class="legend-dot" style="background:#0284c7"></span>Lower Bound</span>
+        </div>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chart-forecast"></canvas>
+      </div>
+    </div>
+  </div>
+
 
   <!-- COMPARISON TABLE -->
   <div class="section">
