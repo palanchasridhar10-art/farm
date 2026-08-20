@@ -9,6 +9,14 @@ _env_path = Path(__file__).resolve().parents[2] / ".env"
 load_dotenv(_env_path)
 
 
+def _get_db_url() -> str:
+    url = os.getenv("DATABASE_URL", "sqlite:///./farmer_market_ai.db")
+    # Render and Heroku use postgres:// which SQLAlchemy 1.4+ deprecated in favor of postgresql://
+    if url.startswith("postgres://"):
+        url = url.replace("postgres://", "postgresql://", 1)
+    return url
+
+
 class Settings:
     """Central configuration — reads from environment with sane defaults."""
 
@@ -17,7 +25,7 @@ class Settings:
     APP_VERSION: str = os.getenv("APP_VERSION", "1.0.0")
 
     # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./farmer_market_ai.db")
+    DATABASE_URL: str = _get_db_url()
 
     # OpenRouter
     OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
@@ -42,6 +50,7 @@ class Settings:
         for o in os.getenv(
             "CORS_ORIGINS", "http://localhost:3000,http://localhost:8000"
         ).split(",")
+        if o.strip()
     ]
 
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
@@ -53,3 +62,4 @@ class Settings:
 
 
 settings = Settings()
+

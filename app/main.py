@@ -13,16 +13,43 @@ from app.api.routes_markets import router as markets_router
 from app.api.routes_prices import router as prices_router
 from app.api.routes_forecasts import router as forecasts_router
 
+import logging
+from contextlib import asynccontextmanager
+
+logger = logging.getLogger("uvicorn.error")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Safe startup: create tables and seed demo data if empty
+    try:
+        create_all_tables()
+        from app.db.session import SessionLocal
+        from app.db.models.district import District
+        db = SessionLocal()
+        try:
+            if not db.query(District).first():
+                from scripts.seed_data import seed_database
+                seed_database(db)
+        finally:
+            db.close()
+        logger.info("Database initialized successfully.")
+    except Exception as exc:
+        logger.error(f"Database initialization warning (will continue startup): {exc}")
+    yield
+
+
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     description="AI-Based Farmer Market Price Prediction System for Telangana",
+    lifespan=lifespan,
 )
 
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=settings.CORS_ORIGINS or ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -39,20 +66,6 @@ app.include_router(prices_router)
 app.include_router(forecasts_router)
 app.include_router(chat_router)
 
-
-@app.on_event("startup")
-def startup():
-    create_all_tables()
-    # Auto-seed if DB is empty
-    from app.db.session import SessionLocal
-    from app.db.models.district import District
-    db = SessionLocal()
-    try:
-        if not db.query(District).first():
-            from scripts.seed_data import seed_database
-            seed_database(db)
-    finally:
-        db.close()
 
 
 @app.get("/")

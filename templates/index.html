@@ -21,57 +21,77 @@
       </div>
     </div>
     <div class="controls">
-      <select id="sel-district">
-        <option value="adilabad">Adilabad</option>
-        <option value="bhadradri-kothagudem">Bhadradri Kothagudem</option>
-        <option value="hanamkonda">Hanamkonda</option>
-        <option value="hyderabad">Hyderabad</option>
-        <option value="jagtial">Jagtial</option>
-        <option value="jangaon">Jangaon</option>
-        <option value="jayashankar-bhupalpally">Jayashankar Bhupalpally</option>
-        <option value="jogulamba-gadwal">Jogulamba Gadwal</option>
-        <option value="kamareddy">Kamareddy</option>
-        <option value="karimnagar">Karimnagar</option>
-        <option value="khammam">Khammam</option>
-        <option value="komaram-bheem-asifabad">Komaram Bheem Asifabad</option>
-        <option value="mahabubabad">Mahabubabad</option>
-        <option value="mahabubnagar">Mahabubnagar</option>
-        <option value="mancherial">Mancherial</option>
-        <option value="medak">Medak</option>
-        <option value="medchal-malkajgiri">Medchal-Malkajgiri</option>
-        <option value="mulugu">Mulugu</option>
-        <option value="nagarkurnool">Nagarkurnool</option>
-        <option value="nalgonda" selected>Nalgonda</option>
-        <option value="narayanpet">Narayanpet</option>
-        <option value="nirmal">Nirmal</option>
-        <option value="nizamabad">Nizamabad</option>
-        <option value="peddapalli">Peddapalli</option>
-        <option value="rajanna-sircilla">Rajanna Sircilla</option>
-        <option value="rangareddy">Rangareddy</option>
-        <option value="sangareddy">Sangareddy</option>
-        <option value="siddipet">Siddipet</option>
-        <option value="suryapet">Suryapet</option>
-        <option value="vikarabad">Vikarabad</option>
-        <option value="wanaparthy">Wanaparthy</option>
-        <option value="warangal">Warangal</option>
-        <option value="yadadri-bhuvanagiri">Yadadri Bhuvanagiri</option>
-      </select>
-      <select id="sel-commodity">
-        <option value="tomato">🍅 Tomato</option>
-        <option value="cotton">🌿 Cotton</option>
-        <option value="turmeric">🟡 Turmeric</option>
-        <option value="paddy">🌾 Paddy</option>
-        <option value="maize">🌽 Maize</option>
-        <option value="red chilli">🌶️ Red Chilli</option>
-        <option value="onion">🧅 Onion</option>
-        <option value="groundnut">🥜 Groundnut</option>
-        <option value="bengal gram">🫘 Bengal Gram</option>
-        <option value="red gram">🫘 Red Gram</option>
-      </select>
-      <select id="sel-lang">
-        <option value="en">English</option>
-        <option value="te">తెలుగు</option>
-      </select>
+      <div class="select-group">
+        <label class="select-label" for="sel-district">📍 District</label>
+        <select id="sel-district">
+          <option value="adilabad">Adilabad</option>
+          <option value="bhadradri-kothagudem">Bhadradri Kothagudem</option>
+          <option value="hanamkonda">Hanumakonda</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="jagtial">Jagtial</option>
+          <option value="jangaon">Jangaon</option>
+          <option value="jayashankar-bhupalpally">Jayashankar Bhupalpally</option>
+          <option value="jogulamba-gadwal">Jogulamba Gadwal</option>
+          <option value="kamareddy">Kamareddy</option>
+          <option value="karimnagar">Karimnagar</option>
+          <option value="khammam">Khammam</option>
+          <option value="komaram-bheem-asifabad">Kumuram Bheem Asifabad</option>
+          <option value="mahabubabad">Mahabubabad</option>
+          <option value="mahabubnagar">Mahabubnagar</option>
+          <option value="mancherial">Mancherial</option>
+          <option value="medak">Medak</option>
+          <option value="medchal-malkajgiri">Medchal–Malkajgiri</option>
+          <option value="mulugu">Mulugu</option>
+          <option value="nagarkurnool">Nagarkurnool</option>
+          <option value="nalgonda" selected>Nalgonda</option>
+          <option value="narayanpet">Narayanpet</option>
+          <option value="nirmal">Nirmal</option>
+          <option value="nizamabad">Nizamabad</option>
+          <option value="peddapalli">Peddapalli</option>
+          <option value="rajanna-sircilla">Rajanna Sircilla</option>
+          <option value="rangareddy">Rangareddy</option>
+          <option value="sangareddy">Sangareddy</option>
+          <option value="siddipet">Siddipet</option>
+          <option value="suryapet">Suryapet</option>
+          <option value="vikarabad">Vikarabad</option>
+          <option value="wanaparthy">Wanaparthy</option>
+          <option value="warangal">Warangal</option>
+          <option value="yadadri-bhuvanagiri">Yadadri Bhuvanagiri</option>
+        </select>
+      </div>
+
+      <!-- SEPARATE SPACE FOR RYTHU BAZAR SELECTION -->
+      <div class="select-group rythu-bazar-group">
+        <label class="select-label" for="sel-market">🏪 Rythu Bazar</label>
+        <select id="sel-market" class="rythu-bazar-select">
+          <option value="">⏳ Loading Rythu Bazars...</option>
+        </select>
+      </div>
+
+      <div class="select-group">
+        <label class="select-label" for="sel-commodity">🌾 Crop / Commodity</label>
+        <select id="sel-commodity">
+          <option value="tomato">🍅 Tomato</option>
+          <option value="cotton">🌿 Cotton</option>
+          <option value="turmeric">🟡 Turmeric</option>
+          <option value="paddy">🌾 Paddy</option>
+          <option value="maize">🌽 Maize</option>
+          <option value="red chilli">🌶️ Red Chilli</option>
+          <option value="onion">🧅 Onion</option>
+          <option value="groundnut">🥜 Groundnut</option>
+          <option value="bengal gram">🫘 Bengal Gram</option>
+          <option value="red gram">🫘 Red Gram</option>
+        </select>
+      </div>
+
+      <div class="select-group lang-group">
+        <label class="select-label" for="sel-lang">🌐 Language</label>
+        <select id="sel-lang">
+          <option value="en">English</option>
+          <option value="te">తెలుగు</option>
+        </select>
+      </div>
+
       <button class="btn-chat" onclick="toggleChat()">💬 Ask AI</button>
     </div>
   </div>
@@ -80,8 +100,24 @@
 <!-- MAIN CONTENT -->
 <main class="main">
 
+  <!-- ACTIVE RYTHU BAZAR INFO BANNER -->
+  <div class="active-bazar-banner" id="active-bazar-banner">
+    <div class="bazar-info-left">
+      <div class="bazar-badge-row">
+        <span class="bazar-pill">🏪 Official Rythu Bazar</span>
+        <span class="state-pill">Telangana Agricultural Marketing</span>
+      </div>
+      <h2 id="bazar-banner-title" class="bazar-title">Rythu Bazar, Beet Market, Nalgonda</h2>
+      <p id="bazar-banner-address" class="bazar-address">📍 Beet Market, Hyderabad Road, Nalgonda – 508001</p>
+    </div>
+    <div class="bazar-info-right">
+      <span class="freshness" id="freshness-badge">🟢 Verified e-NAM Feed</span>
+    </div>
+  </div>
+
   <!-- KPI CARDS -->
   <div class="kpi-grid" id="kpi-grid">
+
     <div class="kpi-card">
       <div class="kpi-label">Latest Modal Price</div>
       <div class="kpi-value green" id="kpi-price">—</div>

@@ -14,39 +14,39 @@ from app.db.models.forecast import Forecast
 from app.db.models.data_source import DataSource
 
 DISTRICTS_DATA = [
-    {"name": "Adilabad", "slug": "adilabad", "markets": ["Adilabad APMC", "Echoda Mandi", "Boath Market"]},
-    {"name": "Bhadradri Kothagudem", "slug": "bhadradri-kothagudem", "markets": ["Kothagudem Mandi", "Bhadrachalam APMC", "Yellandu Market"]},
-    {"name": "Hanamkonda", "slug": "hanamkonda", "markets": ["Hanamkonda APMC", "Parkal Mandi", "Kamalapur Market"]},
-    {"name": "Hyderabad", "slug": "hyderabad", "markets": ["Bowenpally Market", "Gaddiannaram APMC", "Gudimalkapur Mandi"]},
-    {"name": "Jagtial", "slug": "jagtial", "markets": ["Jagtial APMC", "Korutla Mandi", "Metpally Market"]},
-    {"name": "Jangaon", "slug": "jangaon", "markets": ["Jangaon APMC", "Bachannapet Mandi", "Station Ghanpur Market"]},
-    {"name": "Jayashankar Bhupalpally", "slug": "jayashankar-bhupalpally", "markets": ["Bhupalpally Mandi", "Kataram APMC", "Regonda Market"]},
-    {"name": "Jogulamba Gadwal", "slug": "jogulamba-gadwal", "markets": ["Gadwal APMC", "Alampur Mandi", "Ieeja Market"]},
-    {"name": "Kamareddy", "slug": "kamareddy", "markets": ["Kamareddy APMC", "Banswada Mandi", "Yellareddy Market"]},
-    {"name": "Karimnagar", "slug": "karimnagar", "markets": ["Karimnagar Main APMC", "Huzurabad Market", "Jammikunta Mandi"]},
-    {"name": "Khammam", "slug": "khammam", "markets": ["Khammam Cotton Market", "Madhira APMC", "Wyra Mandi"]},
-    {"name": "Komaram Bheem Asifabad", "slug": "komaram-bheem-asifabad", "markets": ["Asifabad APMC", "Kagaznagar Mandi", "Rebbena Market"]},
-    {"name": "Mahabubabad", "slug": "mahabubabad", "markets": ["Mahabubabad APMC", "Kesamudram Mandi", "Thorrur Market"]},
-    {"name": "Mahabubnagar", "slug": "mahabubnagar", "markets": ["Mahabubnagar APMC", "Badepally Mandi", "Jadcherla Market"]},
-    {"name": "Mancherial", "slug": "mancherial", "markets": ["Mancherial APMC", "Bellampalli Mandi", "Chennur Market"]},
-    {"name": "Medak", "slug": "medak", "markets": ["Medak APMC", "Ramayampet Mandi", "Toopran Market"]},
-    {"name": "Medchal-Malkajgiri", "slug": "medchal-malkajgiri", "markets": ["Medchal APMC", "Keesara Market", "Malkajgiri Mandi"]},
-    {"name": "Mulugu", "slug": "mulugu", "markets": ["Mulugu Mandi", "Eturnagaram APMC", "Venkatapur Market"]},
-    {"name": "Nagarkurnool", "slug": "nagarkurnool", "markets": ["Nagarkurnool APMC", "Kalwakurthy Mandi", "Achampet Market"]},
-    {"name": "Nalgonda", "slug": "nalgonda", "markets": ["Nalgonda Rythu Market", "Miryalaguda APMC", "Nakrekal Mandi"]},
-    {"name": "Narayanpet", "slug": "narayanpet", "markets": ["Narayanpet APMC", "Makthal Mandi", "Kosgi Market"]},
-    {"name": "Nirmal", "slug": "nirmal", "markets": ["Nirmal APMC", "Bhainsa Mandi", "Khanapur Market"]},
-    {"name": "Nizamabad", "slug": "nizamabad", "markets": ["Nizamabad APMC", "Bodhan Mandi", "Armoor Market"]},
-    {"name": "Peddapalli", "slug": "peddapalli", "markets": ["Peddapalli APMC", "Sultanabad Mandi", "Ramagundam Market"]},
-    {"name": "Rajanna Sircilla", "slug": "rajanna-sircilla", "markets": ["Sircilla APMC", "Vemulawada Mandi", "Mustabad Market"]},
-    {"name": "Rangareddy", "slug": "rangareddy", "markets": ["Shadnagar APMC", "Chevella Mandi", "Ibrahimpatnam Market"]},
-    {"name": "Sangareddy", "slug": "sangareddy", "markets": ["Sangareddy APMC", "Sadasivpet Mandi", "Zaheerabad Market"]},
-    {"name": "Siddipet", "slug": "siddipet", "markets": ["Siddipet APMC", "Gajwel Mandi", "Dubbak Market"]},
-    {"name": "Suryapet", "slug": "suryapet", "markets": ["Suryapet APMC", "Kodad Mandi", "Huzurnagar Market"]},
-    {"name": "Vikarabad", "slug": "vikarabad", "markets": ["Vikarabad APMC", "Tandur Mandi", "Parigi Market"]},
-    {"name": "Wanaparthy", "slug": "wanaparthy", "markets": ["Wanaparthy APMC", "Kothakota Mandi", "Pebbair Market"]},
-    {"name": "Warangal", "slug": "warangal", "markets": ["Enumamula Warangal APMC", "Narsampet Mandi", "Wardhannapet Market"]},
-    {"name": "Yadadri Bhuvanagiri", "slug": "yadadri-bhuvanagiri", "markets": ["Bhongir APMC", "Choutuppal Mandi", "Alair Market"]},
+    {"name": "Adilabad", "slug": "adilabad", "markets": ["Rythu Bazar, Adilabad town (CCI Area)", "Adilabad APMC", "Echoda Mandi"]},
+    {"name": "Bhadradri Kothagudem", "slug": "bhadradri-kothagudem", "markets": ["Rythu Bazar, Kothagudem town", "Bhadrachalam APMC", "Yellandu Market"]},
+    {"name": "Hanumakonda", "slug": "hanamkonda", "markets": ["Rythu Bazar, Excise Colony, Hanumakonda", "Hanamkonda APMC", "Parkal Mandi"]},
+    {"name": "Hyderabad", "slug": "hyderabad", "markets": ["Rythu Bazar, Mehdipatnam, Hyderabad", "Bowenpally Market", "Gudimalkapur Mandi"]},
+    {"name": "Jagtial", "slug": "jagtial", "markets": ["Rythu Bazar, Jagtial town", "Jagtial APMC", "Korutla Mandi"]},
+    {"name": "Jangaon", "slug": "jangaon", "markets": ["Rythu Bazar, Jangaon town", "Jangaon APMC", "Station Ghanpur Market"]},
+    {"name": "Jayashankar Bhupalpally", "slug": "jayashankar-bhupalpally", "markets": ["Rythu Bazar, Bhupalpally town", "Kataram APMC", "Regonda Market"]},
+    {"name": "Jogulamba Gadwal", "slug": "jogulamba-gadwal", "markets": ["Rythu Bazar, Gadwal town", "Gadwal APMC", "Alampur Mandi"]},
+    {"name": "Kamareddy", "slug": "kamareddy", "markets": ["Rythu Bazar, Kamareddy town", "Kamareddy APMC", "Banswada Mandi"]},
+    {"name": "Karimnagar", "slug": "karimnagar", "markets": ["Rythu Bazar, Karimnagar city", "Karimnagar Main APMC", "Huzurabad Market"]},
+    {"name": "Khammam", "slug": "khammam", "markets": ["Integrated Rythu Bazar, NSP Camp, Khammam", "Khammam Cotton Market", "Madhira APMC"]},
+    {"name": "Kumuram Bheem Asifabad", "slug": "komaram-bheem-asifabad", "markets": ["Rythu Bazar, Asifabad town", "Asifabad APMC", "Kagaznagar Mandi"]},
+    {"name": "Mahabubabad", "slug": "mahabubabad", "markets": ["Rythu Bazar, Mahabubabad town", "Mahabubabad APMC", "Kesamudram Mandi"]},
+    {"name": "Mahabubnagar", "slug": "mahabubnagar", "markets": ["Rythu Bazar, Mahabubnagar town", "Mahabubnagar APMC", "Badepally Mandi"]},
+    {"name": "Mancherial", "slug": "mancherial", "markets": ["Rythu Bazar, Mancherial town", "Mancherial APMC", "Bellampalli Mandi"]},
+    {"name": "Medak", "slug": "medak", "markets": ["Rythu Bazar, Medak town", "Medak APMC", "Ramayampet Mandi"]},
+    {"name": "Medchal-Malkajgiri", "slug": "medchal-malkajgiri", "markets": ["Rythu Bazar, Bowenpally", "Medchal APMC", "Malkajgiri Mandi"]},
+    {"name": "Mulugu", "slug": "mulugu", "markets": ["Rythu Bazar, Mulugu town", "Eturnagaram APMC", "Venkatapur Market"]},
+    {"name": "Nagarkurnool", "slug": "nagarkurnool", "markets": ["Rythu Bazar, Nagarkurnool town", "Nagarkurnool APMC", "Kalwakurthy Mandi"]},
+    {"name": "Nalgonda", "slug": "nalgonda", "markets": ["Rythu Bazar, Beet Market, Nalgonda", "Miryalaguda APMC", "Nakrekal Mandi"]},
+    {"name": "Narayanpet", "slug": "narayanpet", "markets": ["Rythu Bazar, Narayanpet town", "Narayanpet APMC", "Makthal Mandi"]},
+    {"name": "Nirmal", "slug": "nirmal", "markets": ["Rythu Bazar, Nirmal town", "Nirmal APMC", "Bhainsa Mandi"]},
+    {"name": "Nizamabad", "slug": "nizamabad", "markets": ["Rythu Bazar, Nizamabad city", "Nizamabad APMC", "Bodhan Mandi"]},
+    {"name": "Peddapalli", "slug": "peddapalli", "markets": ["Rythu Bazar, Peddapalli town", "Peddapalli APMC", "Sultanabad Mandi"]},
+    {"name": "Rajanna Sircilla", "slug": "rajanna-sircilla", "markets": ["Rythu Bazar, Sircilla town", "Sircilla APMC", "Vemulawada Mandi"]},
+    {"name": "Rangareddy", "slug": "rangareddy", "markets": ["Rythu Bazar, Vanasthalipuram", "Shadnagar APMC", "Chevella Mandi"]},
+    {"name": "Sangareddy", "slug": "sangareddy", "markets": ["Rythu Bazar, Sangareddy town", "Sangareddy APMC", "Zaheerabad Market"]},
+    {"name": "Siddipet", "slug": "siddipet", "markets": ["Rythu Bazar, Siddipet town", "Siddipet APMC", "Gajwel Mandi"]},
+    {"name": "Suryapet", "slug": "suryapet", "markets": ["Rythu Bazar, Suryapet town", "Suryapet APMC", "Kodad Mandi"]},
+    {"name": "Vikarabad", "slug": "vikarabad", "markets": ["Rythu Bazar, Vikarabad town", "Vikarabad APMC", "Tandur Mandi"]},
+    {"name": "Wanaparthy", "slug": "wanaparthy", "markets": ["Rythu Bazar, Wanaparthy town", "Wanaparthy APMC", "Kothakota Mandi"]},
+    {"name": "Warangal", "slug": "warangal", "markets": ["Rythu Bazar, Shambunipet, Warangal", "Enumamula Warangal APMC", "Narsampet Mandi"]},
+    {"name": "Yadadri Bhuvanagiri", "slug": "yadadri-bhuvanagiri", "markets": ["Rythu Bazar, Bhongir town", "Bhongir APMC", "Choutuppal Mandi"]},
 ]
 
 COMMODITIES_DATA = [
@@ -120,6 +120,10 @@ def seed_database(db: Session | None = None):
         random.seed(42)
         today = date.today()
 
+        obs_batch = []
+        forecast_batch = []
+        BATCH_SIZE = 2000
+
         for district_id, markets in district_market_map.items():
             for market in markets:
                 for comm, base_price in commodity_objs:
@@ -146,7 +150,11 @@ def seed_database(db: Session | None = None):
                             source_id=src.id,
                             data_quality_status="validated",
                         )
-                        db.add(obs)
+                        obs_batch.append(obs)
+                        if len(obs_batch) >= BATCH_SIZE:
+                            db.bulk_save_objects(obs_batch)
+                            db.commit()
+                            obs_batch = []
 
                     # 5. Generate Forecasts for Horizons: 1, 3, 7 days
                     for horizon in [1, 3, 7]:
@@ -166,8 +174,16 @@ def seed_database(db: Session | None = None):
                             model_name="XGBoost_PricePredictor_v1",
                             model_version="1.2.0",
                         )
-                        db.add(f)
+                        forecast_batch.append(f)
+                        if len(forecast_batch) >= BATCH_SIZE:
+                            db.bulk_save_objects(forecast_batch)
+                            db.commit()
+                            forecast_batch = []
 
+        if obs_batch:
+            db.bulk_save_objects(obs_batch)
+        if forecast_batch:
+            db.bulk_save_objects(forecast_batch)
         db.commit()
     finally:
         if close_at_end:

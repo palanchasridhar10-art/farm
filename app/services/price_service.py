@@ -27,9 +27,17 @@ class PriceService:
             ) or district_repo.get_district_by_name(db, district_name)
 
         if market_name and target_district:
+            # Try slug lookup first, then name
             target_market = market_repo.get_market_by_slug(
                 db, target_district.id, market_name
             )
+            if not target_market:
+                # market_name might be the full name — find by name
+                all_markets = market_repo.get_markets_by_district(db, target_district.id)
+                for m in all_markets:
+                    if m.name.lower() == market_name.lower() or m.slug == market_name:
+                        target_market = m
+                        break
 
         if not target_market and target_district:
             target_market = market_repo.get_primary_market_for_district(
@@ -140,7 +148,8 @@ class PriceService:
         }
 
     def get_history(
-        self, db: Session, commodity_name: str, district_name: str, days: int = 30
+        self, db: Session, commodity_name: str, district_name: str, days: int = 30,
+        market_slug: str | None = None,
     ):
         comm = commodity_repo.resolve_commodity(db, commodity_name)
         if not comm:
@@ -158,9 +167,24 @@ class PriceService:
                 "series": [],
             }
 
-        history = observation_repo.get_history_by_district(
-            db, comm.id, dist.id, days=days
-        )
+        target_market = None
+        if market_slug:
+            target_market = market_repo.get_market_by_slug(db, dist.id, market_slug)
+            if not target_market:
+                # Fallback: try matching by name
+                all_markets = market_repo.get_markets_by_district(db, dist.id)
+                for m in all_markets:
+                    if m.slug == market_slug or m.name.lower() == market_slug.lower():
+                        target_market = m
+                        break
+
+        if target_market:
+            history = observation_repo.get_history(db, comm.id, target_market.id, days=days)
+        else:
+            history = observation_repo.get_history_by_district(
+                db, comm.id, dist.id, days=days
+            )
+
         series = [
             {
                 "date": h.observation_date.isoformat(),
@@ -168,12 +192,14 @@ class PriceService:
                 "min_price": float(h.min_price or h.modal_price * 0.95),
                 "max_price": float(h.max_price or h.modal_price * 1.05),
                 "arrival_quantity": float(h.arrival_quantity or 0.0),
+                "market": target_market.name if target_market else None,
             }
             for h in history
         ]
         return {
             "commodity": comm.canonical_name,
             "district": dist.name,
+            "market": target_market.name if target_market else None,
             "days": days,
             "series": series,
         }

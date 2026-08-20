@@ -18,6 +18,7 @@ class ForecastService:
         commodity_name: str,
         district_name: str,
         horizon_days: int = 7,
+        market_name: str | None = None,
     ):
         comm = commodity_repo.resolve_commodity(db, commodity_name)
         if not comm:
@@ -29,16 +30,29 @@ class ForecastService:
         if not dist:
             return {"error": f"District '{district_name}' not found."}
 
-        market = market_repo.get_primary_market_for_district(db, dist.id)
+        market = None
+        if market_name:
+            market = market_repo.get_market_by_slug(db, dist.id, market_name)
+            if not market:
+                all_markets = market_repo.get_markets_by_district(db, dist.id)
+                for m in all_markets:
+                    if m.name.lower() == market_name.lower() or m.slug == market_name:
+                        market = m
+                        break
+
+        if not market:
+            market = market_repo.get_primary_market_for_district(db, dist.id)
+
         if not market:
             return {"error": "No active market found in this district."}
 
         latest_price_res = price_service.get_latest(
-            db, comm.canonical_name, dist.slug
+            db, comm.canonical_name, dist.slug, market.slug if market else None
         )
         forecasts = forecast_repo.get_forecasts_for_commodity(
             db, comm.id, market.id
         )
+
 
         forecast_list = []
         for f in forecasts:

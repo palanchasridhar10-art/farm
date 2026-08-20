@@ -52,19 +52,83 @@ body {
 .logo h1 { font-size: 20px; font-weight: 700; background: linear-gradient(135deg, #22c55e, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .logo span { font-size: 11px; color: var(--text-muted); display: block; }
 
-.controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.select-group { display: flex; flex-direction: column; gap: 4px; }
+.select-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
 .controls select, .controls button {
   background: var(--bg-glass); border: 1px solid var(--border); color: var(--text-primary);
   padding: 8px 14px; border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s; height: 38px;
 }
 .controls select:hover, .controls button:hover { border-color: var(--accent-green); background: var(--accent-green-glow); }
-.controls select option { background: #1a2332; }
+.controls select option { background: #1a2332; color: #fff; }
+
+/* Dedicated Rythu Bazar Selection Space */
+.rythu-bazar-group { position: relative; }
+.rythu-bazar-group .select-label { color: #38bdf8; font-weight: 700; }
+.rythu-bazar-select {
+  background: rgba(14, 165, 233, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #e0f2fe !important;
+  font-weight: 600;
+  min-width: 250px;
+}
+.rythu-bazar-select:hover, .rythu-bazar-select:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
 .btn-chat { background: var(--gradient-green) !important; border: none !important; font-weight: 600; color: #fff !important; }
 .btn-chat:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(34,197,94,0.3); }
 
-/* ─── MAIN ─── */
-.main { max-width: 1400px; margin: 0 auto; padding: 24px; }
+/* ─── ACTIVE RYTHU BAZAR BANNER ─── */
+.active-bazar-banner {
+  background: linear-gradient(135deg, rgba(17, 25, 40, 0.85), rgba(30, 41, 59, 0.7));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.bazar-badge-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bazar-pill {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--accent-green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.state-pill {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+.bazar-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 6px;
+}
+.bazar-address {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.bazar-info-right { display: flex; gap: 8px; align-items: center; }
+
 
 /* ─── KPI CARDS ─── */
 .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }

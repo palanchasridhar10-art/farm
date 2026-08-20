@@ -11,10 +11,12 @@ router = APIRouter(prefix="/api/v1", tags=["forecasts"])
 def get_forecast(
     commodity: str = Query(...),
     district: str = Query("nalgonda"),
+    market: str = Query(None, description="Market slug (optional)"),
     horizon: int = Query(7, ge=1, le=30),
     db: Session = Depends(get_db),
 ):
-    return forecast_service.get_forecast(db, commodity, district, horizon)
+    return forecast_service.get_forecast(db, commodity, district, horizon, market)
+
 
 @router.get("/compare")
 def compare_markets(
