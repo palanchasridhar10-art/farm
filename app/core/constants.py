@@ -60,14 +60,42 @@ DEFAULT_QUANTITY_UNIT = "quintal"
 FORECAST_HORIZONS = [1, 3, 7]
 
 # ---------------------------------------------------------------------------
-# Supported districts (initial 5)
+# Supported districts (All 33 districts of Telangana)
 # ---------------------------------------------------------------------------
 INITIAL_DISTRICTS = [
-    {"name": "Nizamabad", "slug": "nizamabad"},
+    {"name": "Adilabad", "slug": "adilabad"},
+    {"name": "Bhadradri Kothagudem", "slug": "bhadradri-kothagudem"},
+    {"name": "Hanamkonda", "slug": "hanamkonda"},
+    {"name": "Hyderabad", "slug": "hyderabad"},
+    {"name": "Jagtial", "slug": "jagtial"},
+    {"name": "Jangaon", "slug": "jangaon"},
+    {"name": "Jayashankar Bhupalpally", "slug": "jayashankar-bhupalpally"},
+    {"name": "Jogulamba Gadwal", "slug": "jogulamba-gadwal"},
+    {"name": "Kamareddy", "slug": "kamareddy"},
     {"name": "Karimnagar", "slug": "karimnagar"},
-    {"name": "Warangal", "slug": "warangal"},
-    {"name": "Nalgonda", "slug": "nalgonda"},
     {"name": "Khammam", "slug": "khammam"},
+    {"name": "Komaram Bheem Asifabad", "slug": "komaram-bheem-asifabad"},
+    {"name": "Mahabubabad", "slug": "mahabubabad"},
+    {"name": "Mahabubnagar", "slug": "mahabubnagar"},
+    {"name": "Mancherial", "slug": "mancherial"},
+    {"name": "Medak", "slug": "medak"},
+    {"name": "Medchal-Malkajgiri", "slug": "medchal-malkajgiri"},
+    {"name": "Mulugu", "slug": "mulugu"},
+    {"name": "Nagarkurnool", "slug": "nagarkurnool"},
+    {"name": "Nalgonda", "slug": "nalgonda"},
+    {"name": "Narayanpet", "slug": "narayanpet"},
+    {"name": "Nirmal", "slug": "nirmal"},
+    {"name": "Nizamabad", "slug": "nizamabad"},
+    {"name": "Peddapalli", "slug": "peddapalli"},
+    {"name": "Rajanna Sircilla", "slug": "rajanna-sircilla"},
+    {"name": "Rangareddy", "slug": "rangareddy"},
+    {"name": "Sangareddy", "slug": "sangareddy"},
+    {"name": "Siddipet", "slug": "siddipet"},
+    {"name": "Suryapet", "slug": "suryapet"},
+    {"name": "Vikarabad", "slug": "vikarabad"},
+    {"name": "Wanaparthy", "slug": "wanaparthy"},
+    {"name": "Warangal", "slug": "warangal"},
+    {"name": "Yadadri Bhuvanagiri", "slug": "yadadri-bhuvanagiri"},
 ]
 
 # ---------------------------------------------------------------------------

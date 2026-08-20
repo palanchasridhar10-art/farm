@@ -6,10 +6,10 @@ An intelligent farmer-focused market information platform that combines verified
 
 ## Features
 
-- **5 Telangana Districts**: Nizamabad, Karimnagar, Warangal, Nalgonda, Khammam
+- **All 33 Telangana Districts**: Comprehensive coverage of all districts across the state
 - **10+ Commodities**: Tomato, Cotton, Turmeric, Paddy, Maize, Red Chilli, Onion, Groundnut, Bengal Gram, Red Gram
 - **ML Forecasting**: 1-day, 3-day, and 7-day price predictions with confidence intervals
-- **District Comparison**: Compare prices across all five districts
+- **District Comparison**: Compare prices across districts in Telangana
 - **AI Chatbot**: Tool-grounded chatbot (English + Telugu) that never invents prices
 - **Premium Dashboard**: Dark theme with Chart.js visualizations
 

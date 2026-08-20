@@ -12,7 +12,28 @@ selDistrict.addEventListener('change', loadAll);
 selCommodity.addEventListener('change', loadAll);
 
 // ─── INIT ───
-document.addEventListener('DOMContentLoaded', loadAll);
+document.addEventListener('DOMContentLoaded', async () => {
+  await initDistricts();
+  loadAll();
+});
+
+async function initDistricts() {
+  try {
+    const res = await fetch(`${API}/districts`);
+    const districts = await res.json();
+    if (Array.isArray(districts) && districts.length > 0) {
+      const currentVal = selDistrict.value || 'nalgonda';
+      selDistrict.innerHTML = districts
+        .map(d => `<option value="${d.slug}" ${d.slug === currentVal ? 'selected' : ''}>${d.name}</option>`)
+        .join('');
+      if ([...selDistrict.options].some(o => o.value === currentVal)) {
+        selDistrict.value = currentVal;
+      }
+    }
+  } catch (e) {
+    console.warn('Using pre-rendered district options', e);
+  }
+}
 
 async function loadAll() {
   const commodity = selCommodity.value;
