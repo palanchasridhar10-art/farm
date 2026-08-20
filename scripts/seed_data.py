@@ -49,17 +49,103 @@ DISTRICTS_DATA = [
     {"name": "Yadadri Bhuvanagiri", "slug": "yadadri-bhuvanagiri", "markets": ["Rythu Bazar, Bhongir town", "Bhongir APMC", "Choutuppal Mandi"]},
 ]
 
+# ─── ACCURATE BASE PRICES (INR/Quintal) ───────────────────────────────────────
+# Sources: MSP 2025-26 (Govt. of India), APMC/e-NAM Telangana live feeds,
+#          Agmarknet, Nizamabad/Khammam/Nalgonda mandi averages — August 2025.
+# Each base_price reflects the realistic modal price; seed randomisation
+# generates ±8% min/max around it to simulate real intra-day spread.
+# Seasonal min/max bands per commodity are also defined for realistic drift.
 COMMODITIES_DATA = [
-    {"canonical_name": "Tomato", "local_name_te": "టమాటా", "category": "Vegetables", "base_price": 2400.0, "aliases": ["tomato", "tomatoes", "tamatar", "టమాటా", "టమోటా"]},
-    {"canonical_name": "Cotton", "local_name_te": "పత్తి", "category": "Commercial", "base_price": 7100.0, "aliases": ["cotton", "kapas", "పత్తి"]},
-    {"canonical_name": "Turmeric", "local_name_te": "పసుపు", "category": "Commercial", "base_price": 11500.0, "aliases": ["turmeric", "haldi", "పసుపు"]},
-    {"canonical_name": "Paddy / Rice", "local_name_te": "వరి / ధాన్యం", "category": "Cereals", "base_price": 2250.0, "aliases": ["paddy", "rice", "dhaan", "వరి", "ధాన్యం"]},
-    {"canonical_name": "Maize", "local_name_te": "మొక్కజొన్న", "category": "Cereals", "base_price": 2100.0, "aliases": ["maize", "corn", "makka", "మొక్కజొన్న"]},
-    {"canonical_name": "Red Chilli", "local_name_te": "ఎర్ర మిరప", "category": "Spices", "base_price": 18500.0, "aliases": ["red chilli", "chilli", "mirchi", "మిరప", "ఎర్ర మిరప"]},
-    {"canonical_name": "Onion", "local_name_te": "ఉల్లిపాయ", "category": "Vegetables", "base_price": 2200.0, "aliases": ["onion", "pyaz", "ఉల్లిపాయ", "ఉల్లి"]},
-    {"canonical_name": "Groundnut", "local_name_te": "వేరుశనగ", "category": "Oilseeds", "base_price": 6400.0, "aliases": ["groundnut", "peanut", "moongfali", "వేరుశనగ"]},
-    {"canonical_name": "Bengal Gram", "local_name_te": "శనగలు", "category": "Pulses", "base_price": 5800.0, "aliases": ["bengal gram", "chickpea", "chana", "శనగలు"]},
-    {"canonical_name": "Red Gram / Tur", "local_name_te": "కందులు", "category": "Pulses", "base_price": 9600.0, "aliases": ["red gram", "tur", "arhar", "కందులు"]},
+    {
+        "canonical_name": "Tomato",
+        "local_name_te": "టమాటా",
+        "category": "Vegetables",
+        "base_price": 900.0,       # ₹900/q — typical Telangana Rythu Bazar average (range ₹600–1,200)
+        "seasonal_low": 500.0,
+        "seasonal_high": 2500.0,
+        "aliases": ["tomato", "tomatoes", "tamatar", "టమాటా", "టమోటా"],
+    },
+    {
+        "canonical_name": "Cotton",
+        "local_name_te": "పత్తి",
+        "category": "Commercial",
+        "base_price": 7900.0,      # ₹7,900/q — above MSP ₹7,710 (medium staple); market premium
+        "seasonal_low": 7200.0,
+        "seasonal_high": 9000.0,
+        "aliases": ["cotton", "kapas", "పత్తి"],
+    },
+    {
+        "canonical_name": "Turmeric",
+        "local_name_te": "పసుపు",
+        "category": "Spices",
+        "base_price": 14500.0,     # ₹14,500/q — Nizamabad APMC bulb/finger average Aug 2025
+        "seasonal_low": 8500.0,
+        "seasonal_high": 18000.0,
+        "aliases": ["turmeric", "haldi", "పసుపు"],
+    },
+    {
+        "canonical_name": "Paddy / Rice",
+        "local_name_te": "వరి / ధాన్యం",
+        "category": "Cereals",
+        "base_price": 2450.0,      # ₹2,450/q — above MSP ₹2,300 (common grade); Telangana mandi
+        "seasonal_low": 2200.0,
+        "seasonal_high": 2800.0,
+        "aliases": ["paddy", "rice", "dhaan", "వరి", "ధాన్యం"],
+    },
+    {
+        "canonical_name": "Maize",
+        "local_name_te": "మొక్కజొన్న",
+        "category": "Cereals",
+        "base_price": 2050.0,      # ₹2,050/q — Telangana Kharif 2025 range ₹1,800–2,400
+        "seasonal_low": 1700.0,
+        "seasonal_high": 2600.0,
+        "aliases": ["maize", "corn", "makka", "మొక్కజొన్న"],
+    },
+    {
+        "canonical_name": "Red Chilli",
+        "local_name_te": "ఎర్ర మిరప",
+        "category": "Spices",
+        "base_price": 13000.0,     # ₹13,000/q — Khammam/Warangal avg (range ₹9,000–17,500)
+        "seasonal_low": 8000.0,
+        "seasonal_high": 25000.0,
+        "aliases": ["red chilli", "chilli", "mirchi", "మిరప", "ఎర్ర మిరప"],
+    },
+    {
+        "canonical_name": "Onion",
+        "local_name_te": "ఉల్లిపాయ",
+        "category": "Vegetables",
+        "base_price": 2200.0,      # ₹2,200/q — Telangana avg (range ₹1,500–3,000)
+        "seasonal_low": 800.0,
+        "seasonal_high": 5000.0,
+        "aliases": ["onion", "pyaz", "ఉల్లిపాయ", "ఉల్లి"],
+    },
+    {
+        "canonical_name": "Groundnut",
+        "local_name_te": "వేరుశనగ",
+        "category": "Oilseeds",
+        "base_price": 7263.0,      # ₹7,263/q — MSP 2025-26 (Govt. of India)
+        "seasonal_low": 6500.0,
+        "seasonal_high": 8500.0,
+        "aliases": ["groundnut", "peanut", "moongfali", "వేరుశనగ"],
+    },
+    {
+        "canonical_name": "Bengal Gram",
+        "local_name_te": "శనగలు",
+        "category": "Pulses",
+        "base_price": 5650.0,      # ₹5,650/q — MSP 2025-26 (Govt. of India)
+        "seasonal_low": 5000.0,
+        "seasonal_high": 7000.0,
+        "aliases": ["bengal gram", "chickpea", "chana", "శనగలు"],
+    },
+    {
+        "canonical_name": "Red Gram / Tur",
+        "local_name_te": "కందులు",
+        "category": "Pulses",
+        "base_price": 8000.0,      # ₹8,000/q — MSP 2025-26 (Govt. of India)
+        "seasonal_low": 7200.0,
+        "seasonal_high": 10000.0,
+        "aliases": ["red gram", "tur", "arhar", "కందులు"],
+    },
 ]
 
 def seed_database(db: Session | None = None):

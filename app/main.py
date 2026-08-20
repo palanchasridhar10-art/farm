@@ -15,13 +15,16 @@ from app.api.routes_forecasts import router as forecasts_router
 
 import logging
 from contextlib import asynccontextmanager
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 logger = logging.getLogger("uvicorn.error")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Safe startup: create tables and seed demo data if empty
+    # ─── Startup ─────────────────────────────────────────────────────────────
+    # 1. Create DB tables and seed initial data if empty
     try:
         create_all_tables()
         from app.db.session import SessionLocal
@@ -36,7 +39,36 @@ async def lifespan(app: FastAPI):
         logger.info("Database initialized successfully.")
     except Exception as exc:
         logger.error(f"Database initialization warning (will continue startup): {exc}")
+
+    # 2. Start daily price updater scheduler (runs at 06:00 IST = 00:30 UTC)
+    scheduler = BackgroundScheduler(timezone="Asia/Kolkata")
+    try:
+        from app.services.daily_price_updater import update_daily_prices
+        # Run immediately on startup to ensure today's prices exist
+        update_daily_prices()
+        logger.info("[DailyPriceUpdater] Initial price update completed.")
+        # Schedule daily at 06:00 IST
+        scheduler.add_job(
+            update_daily_prices,
+            trigger=CronTrigger(hour=6, minute=0, timezone="Asia/Kolkata"),
+            id="daily_price_update",
+            replace_existing=True,
+            max_instances=1,
+        )
+        scheduler.start()
+        logger.info("[DailyPriceUpdater] Scheduler started — daily updates at 06:00 IST.")
+    except Exception as exc:
+        logger.error(f"[DailyPriceUpdater] Scheduler startup failed (non-critical): {exc}")
+
     yield
+
+    # ─── Shutdown ────────────────────────────────────────────────────────────
+    try:
+        if scheduler.running:
+            scheduler.shutdown(wait=False)
+            logger.info("[DailyPriceUpdater] Scheduler stopped.")
+    except Exception:
+        pass
 
 
 app = FastAPI(
