@@ -4,41 +4,239 @@ const API = '/api/v1';
 let historyChart = null;
 let forecastChart = null;
 
-// ─── 33 OFFICIAL TELANGANA RYTHU BAZARS METADATA ───
-const RYTHU_BAZARS = {
-  "adilabad": { name: "Rythu Bazar, Adilabad town (CCI Area)", location: "Near Adilabad town / CCI area, Adilabad" },
-  "bhadradri-kothagudem": { name: "Rythu Bazar, Kothagudem town", location: "Kothagudem town, Bhadradri Kothagudem" },
-  "hanamkonda": { name: "Rythu Bazar, Excise Colony, Hanumakonda", location: "Excise Colony Main Road, Hanumakonda – 506001" },
-  "hyderabad": { name: "Rythu Bazar, Mehdipatnam, Hyderabad", location: "Mehdipatnam–Banjara Hills Road, Royal Colony, Mehdipatnam, Hyderabad – 500006" },
-  "jagtial": { name: "Rythu Bazar, Jagtial town", location: "Jagtial town, Jagtial District" },
-  "jangaon": { name: "Rythu Bazar, Jangaon town", location: "Jangaon town, Jangaon District" },
-  "jayashankar-bhupalpally": { name: "Rythu Bazar, Bhupalpally town", location: "Bhupalpally town, Jayashankar Bhupalpally" },
-  "jogulamba-gadwal": { name: "Rythu Bazar, Gadwal town", location: "Gadwal town, Jogulamba Gadwal" },
-  "kamareddy": { name: "Rythu Bazar, Kamareddy town", location: "Kamareddy town, Kamareddy District" },
-  "karimnagar": { name: "Rythu Bazar, Karimnagar city", location: "Karimnagar city, Karimnagar District" },
-  "khammam": { name: "Integrated Rythu Bazar, NSP Camp, Khammam", location: "NSP Camp, Khammam, Telangana" },
-  "komaram-bheem-asifabad": { name: "Rythu Bazar, Asifabad town", location: "Asifabad town, Kumuram Bheem Asifabad" },
-  "mahabubabad": { name: "Rythu Bazar, Mahabubabad town", location: "Mahabubabad town, Mahabubabad District" },
-  "mahabubnagar": { name: "Rythu Bazar, Mahabubnagar town", location: "Mahabubnagar town, Mahabubnagar District" },
-  "mancherial": { name: "Rythu Bazar, Mancherial town", location: "Mancherial town, Mancherial District" },
-  "medak": { name: "Rythu Bazar, Medak town", location: "Medak town, Medak District" },
-  "medchal-malkajgiri": { name: "Rythu Bazar, Bowenpally", location: "Bowenpally / Secunderabad area, Medchal–Malkajgiri" },
-  "mulugu": { name: "Rythu Bazar, Mulugu town", location: "Mulugu town, Mulugu District" },
-  "nagarkurnool": { name: "Rythu Bazar, Nagarkurnool town", location: "Nagarkurnool town, Nagarkurnool District" },
-  "nalgonda": { name: "Rythu Bazar, Beet Market, Nalgonda", location: "Beet Market, Hyderabad Road, Nalgonda – 508001" },
-  "narayanpet": { name: "Rythu Bazar, Narayanpet town", location: "Narayanpet town, Narayanpet District" },
-  "nirmal": { name: "Rythu Bazar, Nirmal town", location: "Nirmal town, Nirmal District" },
-  "nizamabad": { name: "Rythu Bazar, Nizamabad city", location: "Nizamabad city, Nizamabad District" },
-  "peddapalli": { name: "Rythu Bazar, Peddapalli town", location: "Peddapalli town, Peddapalli District" },
-  "rajanna-sircilla": { name: "Rythu Bazar, Sircilla town", location: "Sircilla town, Rajanna Sircilla" },
-  "rangareddy": { name: "Rythu Bazar, Vanasthalipuram", location: "Vanasthalipuram, Hyderabad – 500070, Rangareddy" },
-  "sangareddy": { name: "Rythu Bazar, Sangareddy town", location: "Sangareddy town, Sangareddy District" },
-  "siddipet": { name: "Rythu Bazar, Siddipet town", location: "Siddipet town, Siddipet District" },
-  "suryapet": { name: "Rythu Bazar, Suryapet town", location: "Suryapet town, Suryapet District" },
-  "vikarabad": { name: "Rythu Bazar, Vikarabad town", location: "Vikarabad town, Vikarabad District" },
-  "wanaparthy": { name: "Rythu Bazar, Wanaparthy town", location: "Wanaparthy town, Wanaparthy District" },
-  "warangal": { name: "Rythu Bazar, Shambunipet, Warangal", location: "Shambunipet, Warangal, Telangana" },
-  "yadadri-bhuvanagiri": { name: "Rythu Bazar, Bhongir town", location: "Bhongir town, Yadadri Bhuvanagiri" },
+// ─── 33 OFFICIAL TELANGANA RYTHU BAZARS METADATA & AREAS ───
+const DISTRICT_RYTHU_BAZARS = {
+  "adilabad": {
+    area: "Near Adilabad town / CCI area",
+    display: "📍 CCI Area / Town — Rythu Bazar, Adilabad",
+    name: "Rythu Bazar, Adilabad town (CCI Area)",
+    location: "Near Adilabad town / CCI area, Adilabad",
+    slug: "rythu-bazar-adilabad-town-cci-area"
+  },
+  "bhadradri-kothagudem": {
+    area: "Kothagudem town",
+    display: "📍 Kothagudem Town — Rythu Bazar",
+    name: "Rythu Bazar, Kothagudem town",
+    location: "Kothagudem town, Bhadradri Kothagudem",
+    slug: "rythu-bazar-kothagudem-town"
+  },
+  "hanamkonda": {
+    area: "Excise Colony",
+    display: "📍 Excise Colony — Rythu Bazar, Hanumakonda",
+    name: "Rythu Bazar, Excise Colony, Hanumakonda",
+    location: "Excise Colony Main Road, Hanumakonda – 506001",
+    slug: "rythu-bazar-excise-colony-hanumakonda"
+  },
+  "hyderabad": {
+    area: "Mehdipatnam",
+    display: "📍 Mehdipatnam — Rythu Bazar, Hyderabad",
+    name: "Rythu Bazar, Mehdipatnam, Hyderabad",
+    location: "Mehdipatnam–Banjara Hills Road, Royal Colony, Mehdipatnam, Hyderabad – 500006",
+    slug: "rythu-bazar-mehdipatnam-hyderabad"
+  },
+  "jagtial": {
+    area: "Jagtial town",
+    display: "📍 Jagtial Town — Rythu Bazar",
+    name: "Rythu Bazar, Jagtial town",
+    location: "Jagtial town, Jagtial District",
+    slug: "rythu-bazar-jagtial-town"
+  },
+  "jangaon": {
+    area: "Jangaon town",
+    display: "📍 Jangaon Town — Rythu Bazar",
+    name: "Rythu Bazar, Jangaon town",
+    location: "Jangaon town, Jangaon District",
+    slug: "rythu-bazar-jangaon-town"
+  },
+  "jayashankar-bhupalpally": {
+    area: "Bhupalpally town",
+    display: "📍 Bhupalpally Town — Rythu Bazar",
+    name: "Rythu Bazar, Bhupalpally town",
+    location: "Bhupalpally town, Jayashankar Bhupalpally",
+    slug: "rythu-bazar-bhupalpally-town"
+  },
+  "jogulamba-gadwal": {
+    area: "Gadwal town",
+    display: "📍 Gadwal Town — Rythu Bazar",
+    name: "Rythu Bazar, Gadwal town",
+    location: "Gadwal town, Jogulamba Gadwal",
+    slug: "rythu-bazar-gadwal-town"
+  },
+  "kamareddy": {
+    area: "Kamareddy town",
+    display: "📍 Kamareddy Town — Rythu Bazar",
+    name: "Rythu Bazar, Kamareddy town",
+    location: "Kamareddy town, Kamareddy District",
+    slug: "rythu-bazar-kamareddy-town"
+  },
+  "karimnagar": {
+    area: "Karimnagar city",
+    display: "📍 Karimnagar City — Rythu Bazar",
+    name: "Rythu Bazar, Karimnagar city",
+    location: "Karimnagar city, Karimnagar District",
+    slug: "rythu-bazar-karimnagar-city"
+  },
+  "khammam": {
+    area: "NSP Camp",
+    display: "📍 NSP Camp — Integrated Rythu Bazar, Khammam",
+    name: "Integrated Rythu Bazar, NSP Camp, Khammam",
+    location: "NSP Camp, Khammam, Telangana",
+    slug: "integrated-rythu-bazar-nsp-camp-khammam"
+  },
+  "komaram-bheem-asifabad": {
+    area: "Asifabad town",
+    display: "📍 Asifabad Town — Rythu Bazar",
+    name: "Rythu Bazar, Asifabad town",
+    location: "Asifabad town, Kumuram Bheem Asifabad",
+    slug: "rythu-bazar-asifabad-town"
+  },
+  "mahabubabad": {
+    area: "Mahabubabad town",
+    display: "📍 Mahabubabad Town — Rythu Bazar",
+    name: "Rythu Bazar, Mahabubabad town",
+    location: "Mahabubabad town, Mahabubabad District",
+    slug: "rythu-bazar-mahabubabad-town"
+  },
+  "mahabubnagar": {
+    area: "Mahabubnagar town",
+    display: "📍 Mahabubnagar Town — Rythu Bazar",
+    name: "Rythu Bazar, Mahabubnagar town",
+    location: "Mahabubnagar town, Mahabubnagar District",
+    slug: "rythu-bazar-mahabubnagar-town"
+  },
+  "mancherial": {
+    area: "Mancherial town",
+    display: "📍 Mancherial Town — Rythu Bazar",
+    name: "Rythu Bazar, Mancherial town",
+    location: "Mancherial town, Mancherial District",
+    slug: "rythu-bazar-mancherial-town"
+  },
+  "medak": {
+    area: "Medak town",
+    display: "📍 Medak Town — Rythu Bazar",
+    name: "Rythu Bazar, Medak town",
+    location: "Medak town, Medak District",
+    slug: "rythu-bazar-medak-town"
+  },
+  "medchal-malkajgiri": {
+    area: "Bowenpally",
+    display: "📍 Bowenpally — Rythu Bazar, Medchal–Malkajgiri",
+    name: "Rythu Bazar, Bowenpally",
+    location: "Bowenpally / Secunderabad area, Medchal–Malkajgiri",
+    slug: "rythu-bazar-bowenpally"
+  },
+  "mulugu": {
+    area: "Mulugu town",
+    display: "📍 Mulugu Town — Rythu Bazar",
+    name: "Rythu Bazar, Mulugu town",
+    location: "Mulugu town, Mulugu District",
+    slug: "rythu-bazar-mulugu-town"
+  },
+  "nagarkurnool": {
+    area: "Nagarkurnool town",
+    display: "📍 Nagarkurnool Town — Rythu Bazar",
+    name: "Rythu Bazar, Nagarkurnool town",
+    location: "Nagarkurnool town, Nagarkurnool District",
+    slug: "rythu-bazar-nagarkurnool-town"
+  },
+  "nalgonda": {
+    area: "Beet Market",
+    display: "📍 Beet Market — Rythu Bazar, Nalgonda",
+    name: "Rythu Bazar, Beet Market, Nalgonda",
+    location: "Beet Market, Hyderabad Road, Nalgonda – 508001",
+    slug: "rythu-bazar-beet-market-nalgonda"
+  },
+  "narayanpet": {
+    area: "Narayanpet town",
+    display: "📍 Narayanpet Town — Rythu Bazar",
+    name: "Rythu Bazar, Narayanpet town",
+    location: "Narayanpet town, Narayanpet District",
+    slug: "rythu-bazar-narayanpet-town"
+  },
+  "nirmal": {
+    area: "Nirmal town",
+    display: "📍 Nirmal Town — Rythu Bazar",
+    name: "Rythu Bazar, Nirmal town",
+    location: "Nirmal town, Nirmal District",
+    slug: "rythu-bazar-nirmal-town"
+  },
+  "nizamabad": {
+    area: "Nizamabad city",
+    display: "📍 Nizamabad City — Rythu Bazar",
+    name: "Rythu Bazar, Nizamabad city",
+    location: "Nizamabad city, Nizamabad District",
+    slug: "rythu-bazar-nizamabad-city"
+  },
+  "peddapalli": {
+    area: "Peddapalli town",
+    display: "📍 Peddapalli Town — Rythu Bazar",
+    name: "Rythu Bazar, Peddapalli town",
+    location: "Peddapalli town, Peddapalli District",
+    slug: "rythu-bazar-peddapalli-town"
+  },
+  "rajanna-sircilla": {
+    area: "Sircilla town",
+    display: "📍 Sircilla Town — Rythu Bazar",
+    name: "Rythu Bazar, Sircilla town",
+    location: "Sircilla town, Rajanna Sircilla",
+    slug: "rythu-bazar-sircilla-town"
+  },
+  "rangareddy": {
+    area: "Vanasthalipuram",
+    display: "📍 Vanasthalipuram — Rythu Bazar, Rangareddy",
+    name: "Rythu Bazar, Vanasthalipuram",
+    location: "Vanasthalipuram, Hyderabad – 500070, Rangareddy",
+    slug: "rythu-bazar-vanasthalipuram"
+  },
+  "sangareddy": {
+    area: "Sangareddy town",
+    display: "📍 Sangareddy Town — Rythu Bazar",
+    name: "Rythu Bazar, Sangareddy town",
+    location: "Sangareddy town, Sangareddy District",
+    slug: "rythu-bazar-sangareddy-town"
+  },
+  "siddipet": {
+    area: "Siddipet town",
+    display: "📍 Siddipet Town — Rythu Bazar",
+    name: "Rythu Bazar, Siddipet town",
+    location: "Siddipet town, Siddipet District",
+    slug: "rythu-bazar-siddipet-town"
+  },
+  "suryapet": {
+    area: "Suryapet town",
+    display: "📍 Suryapet Town — Rythu Bazar",
+    name: "Rythu Bazar, Suryapet town",
+    location: "Suryapet town, Suryapet District",
+    slug: "rythu-bazar-suryapet-town"
+  },
+  "vikarabad": {
+    area: "Vikarabad town",
+    display: "📍 Vikarabad Town — Rythu Bazar",
+    name: "Rythu Bazar, Vikarabad town",
+    location: "Vikarabad town, Vikarabad District",
+    slug: "rythu-bazar-vikarabad-town"
+  },
+  "wanaparthy": {
+    area: "Wanaparthy town",
+    display: "📍 Wanaparthy Town — Rythu Bazar",
+    name: "Rythu Bazar, Wanaparthy town",
+    location: "Wanaparthy town, Wanaparthy District",
+    slug: "rythu-bazar-wanaparthy-town"
+  },
+  "warangal": {
+    area: "Shambunipet",
+    display: "📍 Shambunipet — Rythu Bazar, Warangal",
+    name: "Rythu Bazar, Shambunipet, Warangal",
+    location: "Shambunipet, Warangal, Telangana",
+    slug: "rythu-bazar-shambunipet-warangal"
+  },
+  "yadadri-bhuvanagiri": {
+    area: "Bhongir town",
+    display: "📍 Bhongir Town — Rythu Bazar",
+    name: "Rythu Bazar, Bhongir town",
+    location: "Bhongir town, Yadadri Bhuvanagiri",
+    slug: "rythu-bazar-bhongir-town"
+  }
 };
 
 // ─── SELECTORS ───
@@ -75,16 +273,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 function updateActiveBanner() {
   const dSlug = selDistrict.value;
   const selectedText = selMarket.options[selMarket.selectedIndex]?.text || '';
-  const meta = RYTHU_BAZARS[dSlug];
+  const meta = DISTRICT_RYTHU_BAZARS[dSlug];
 
   const titleEl = document.getElementById('bazar-banner-title');
   const addrEl  = document.getElementById('bazar-banner-address');
 
   if (titleEl) {
-    titleEl.textContent = selectedText || meta?.name || 'Rythu Bazar';
+    titleEl.textContent = meta ? `${meta.name} (${meta.area})` : (selectedText || 'Rythu Bazar');
   }
   if (addrEl) {
-    if (meta && (selectedText.toLowerCase().includes('rythu') || !selectedText)) {
+    if (meta) {
       addrEl.textContent = `📍 ${meta.location}`;
     } else {
       const dName = selDistrict.options[selDistrict.selectedIndex]?.text || dSlug;
@@ -112,38 +310,40 @@ async function initDistricts() {
 }
 
 async function loadMarketsForDistrict(districtSlug) {
-  selMarket.innerHTML = '<option value="">⏳ Loading Rythu Bazars...</option>';
-  selMarket.disabled = true;
+  const meta = DISTRICT_RYTHU_BAZARS[districtSlug];
+  // Instantly populate with specific Rythu Bazar Area (Zero loading delay)
+  const defaultOption = meta
+    ? `<option value="${meta.slug}" selected>${meta.display}</option>`
+    : `<option value="" selected>📍 Primary Rythu Bazar</option>`;
+  
+  selMarket.innerHTML = defaultOption;
+  selMarket.disabled = false;
+  updateActiveBanner();
+
   try {
     const res = await fetch(`${API}/markets?district=${encodeURIComponent(districtSlug)}`);
     const markets = await res.json();
     if (Array.isArray(markets) && markets.length > 0) {
-      selMarket.innerHTML = markets
-        .map((m, i) => `<option value="${m.slug}" ${i === 0 ? 'selected' : ''}>${m.name}</option>`)
-        .join('');
-      selMarket.disabled = false;
-    } else {
-      const fallback = RYTHU_BAZARS[districtSlug];
-      if (fallback) {
-        selMarket.innerHTML = `<option value="rythu-bazar" selected>${fallback.name}</option>`;
-        selMarket.disabled = false;
-      } else {
-        selMarket.innerHTML = '<option value="">No markets found</option>';
-      }
+      let optionsHtml = '';
+      markets.forEach((m, idx) => {
+        const isRythu = m.name.toLowerCase().includes('rythu');
+        let label = m.name;
+        if (isRythu && meta) {
+          label = meta.display;
+        } else if (!isRythu) {
+          label = `🏢 ${m.name}`;
+        }
+        optionsHtml += `<option value="${m.slug}" ${idx === 0 ? 'selected' : ''}>${label}</option>`;
+      });
+      selMarket.innerHTML = optionsHtml;
     }
   } catch (e) {
-    console.warn('Markets load failed, using fallback', e);
-    const fallback = RYTHU_BAZARS[districtSlug];
-    if (fallback) {
-      selMarket.innerHTML = `<option value="rythu-bazar" selected>${fallback.name}</option>`;
-      selMarket.disabled = false;
-    } else {
-      selMarket.innerHTML = '<option value="">—</option>';
-    }
+    console.warn('Markets fetch fallback to local dictionary', e);
   }
 }
 
 async function loadAll() {
+
   const commodity = selCommodity.value;
   const district  = selDistrict.value;
   const market    = selMarket.value;
