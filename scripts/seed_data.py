@@ -14,16 +14,16 @@ from app.db.models.forecast import Forecast
 from app.db.models.data_source import DataSource
 
 DISTRICTS_DATA = [
-    {"name": "Adilabad", "slug": "adilabad", "markets": ["Rythu Bazar, Adilabad town (CCI Area)", "Adilabad APMC", "Echoda Mandi"]},
-    {"name": "Bhadradri Kothagudem", "slug": "bhadradri-kothagudem", "markets": ["Rythu Bazar, Kothagudem town", "Bhadrachalam APMC", "Yellandu Market"]},
-    {"name": "Hanumakonda", "slug": "hanamkonda", "markets": ["Rythu Bazar, Excise Colony, Hanumakonda", "Hanamkonda APMC", "Parkal Mandi"]},
-    {"name": "Hyderabad", "slug": "hyderabad", "markets": ["Rythu Bazar, Mehdipatnam, Hyderabad", "Bowenpally Market", "Gudimalkapur Mandi"]},
-    {"name": "Jagtial", "slug": "jagtial", "markets": ["Rythu Bazar, Jagtial town", "Jagtial APMC", "Korutla Mandi"]},
-    {"name": "Jangaon", "slug": "jangaon", "markets": ["Rythu Bazar, Jangaon town", "Jangaon APMC", "Station Ghanpur Market"]},
-    {"name": "Jayashankar Bhupalpally", "slug": "jayashankar-bhupalpally", "markets": ["Rythu Bazar, Bhupalpally town", "Kataram APMC", "Regonda Market"]},
-    {"name": "Jogulamba Gadwal", "slug": "jogulamba-gadwal", "markets": ["Rythu Bazar, Gadwal town", "Gadwal APMC", "Alampur Mandi"]},
-    {"name": "Kamareddy", "slug": "kamareddy", "markets": ["Rythu Bazar, Kamareddy town", "Kamareddy APMC", "Banswada Mandi"]},
-    {"name": "Karimnagar", "slug": "karimnagar", "markets": ["Rythu Bazar, Karimnagar city", "Karimnagar Main APMC", "Huzurabad Market"]},
+    {"name": "Adilabad", "slug": "adilabad", "markets": ["Adilabad Rythu Bazar / Vegetable Market", "Adilabad APMC", "Echoda Mandi"]},
+    {"name": "Bhadradri Kothagudem", "slug": "bhadradri-kothagudem", "markets": ["Kothagudem Rythu Bazar", "Yellandu Rythu Bazar", "Bhadrachalam APMC"]},
+    {"name": "Hanumakonda", "slug": "hanamkonda", "markets": ["Hanamkonda Rythu Bazar", "Balasamudram Rythu Bazar", "Enumamula Rythu Bazar / Grain Market"]},
+    {"name": "Hyderabad", "slug": "hyderabad", "markets": ["Malakpet Rythu Bazar", "Gudimalkapur Rythu Bazar", "Gudimalkapur Vegetable Market"]},
+    {"name": "Jagtial", "slug": "jagtial", "markets": ["Jagtial Rythu Bazar", "Jagtial Vegetable Market", "Korutla Rythu Bazar"]},
+    {"name": "Jangaon", "slug": "jangaon", "markets": ["Jangaon Vegetable Market", "Jangaon Grain Market", "Station Ghanpur Market"]},
+    {"name": "Jayashankar Bhupalpally", "slug": "jayashankar-bhupalpally", "markets": ["Bhupalpally Rythu Bazar", "Kataram APMC", "Regonda Market"]},
+    {"name": "Jogulamba Gadwal", "slug": "jogulamba-gadwal", "markets": ["Gadwal Rythu Bazar", "Gadwal Vegetable Market", "Alampur Mandi"]},
+    {"name": "Kamareddy", "slug": "kamareddy", "markets": ["Kamareddy Rythu Bazar", "Kamareddy Vegetable Market", "Padmajiwadi Vegetable Market"]},
+    {"name": "Karimnagar", "slug": "karimnagar", "markets": ["Karimnagar Rythu Bazar", "Karimnagar Vegetable Market", "Sipada Rao Fruit Market"]},
     {"name": "Khammam", "slug": "khammam", "markets": ["Integrated Rythu Bazar, NSP Camp, Khammam", "Khammam Cotton Market", "Madhira APMC"]},
     {"name": "Kumuram Bheem Asifabad", "slug": "komaram-bheem-asifabad", "markets": ["Rythu Bazar, Asifabad town", "Asifabad APMC", "Kagaznagar Mandi"]},
     {"name": "Mahabubabad", "slug": "mahabubabad", "markets": ["Rythu Bazar, Mahabubabad town", "Mahabubabad APMC", "Kesamudram Mandi"]},
@@ -45,7 +45,7 @@ DISTRICTS_DATA = [
     {"name": "Suryapet", "slug": "suryapet", "markets": ["Rythu Bazar, Suryapet town", "Suryapet APMC", "Kodad Mandi"]},
     {"name": "Vikarabad", "slug": "vikarabad", "markets": ["Rythu Bazar, Vikarabad town", "Vikarabad APMC", "Tandur Mandi"]},
     {"name": "Wanaparthy", "slug": "wanaparthy", "markets": ["Rythu Bazar, Wanaparthy town", "Wanaparthy APMC", "Kothakota Mandi"]},
-    {"name": "Warangal", "slug": "warangal", "markets": ["Rythu Bazar, Shambunipet, Warangal", "Enumamula Warangal APMC", "Narsampet Mandi"]},
+    {"name": "Warangal", "slug": "warangal", "markets": ["Enumamula Rythu Bazar / Grain Market", "Balasamudram Rythu Bazar", "Hanamkonda Rythu Bazar"]},
     {"name": "Yadadri Bhuvanagiri", "slug": "yadadri-bhuvanagiri", "markets": ["Rythu Bazar, Bhongir town", "Bhongir APMC", "Choutuppal Mandi"]},
 ]
 

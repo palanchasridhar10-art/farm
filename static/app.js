@@ -4,77 +4,144 @@ const API = '/api/v1';
 let historyChart = null;
 let forecastChart = null;
 
-// ─── 33 OFFICIAL TELANGANA RYTHU BAZARS METADATA & AREAS ───
+// ─── OFFICIAL TELANGANA RYTHU BAZARS METADATA & AREAS ───
+// Updated with exact market names, addresses & landmarks (district-wise)
 const DISTRICT_RYTHU_BAZARS = {
   "adilabad": {
-    area: "Near Adilabad town / CCI area",
-    display: "📍 CCI Area / Town — Rythu Bazar, Adilabad",
-    name: "Rythu Bazar, Adilabad town (CCI Area)",
-    location: "Near Adilabad town / CCI area, Adilabad",
-    slug: "rythu-bazar-adilabad-town-cci-area"
+    area: "Gandhi Chowk, Mahalaxmiwada",
+    display: "📍 Gandhi Chowk — Adilabad Rythu Bazar / Vegetable Market",
+    name: "Adilabad Rythu Bazar / Vegetable Market",
+    location: "Vegetable Market, Gandhi Chowk, Mahalaxmiwada, Adilabad, Telangana 504001",
+    landmark: "Opp. Sagar Supermarket, Vinayak Chowk Road, Opp. Rythu Bazar, Ponnar, Ravindra Nagar Colony, Adilabad 504001",
+    slug: "adilabad-rythu-bazar-vegetable-market",
+    markets: [
+      { name: "Adilabad Rythu Bazar / Vegetable Market", location: "Vegetable Market, Gandhi Chowk, Mahalaxmiwada, Adilabad, Telangana 504001", landmark: "Opp. Sagar Supermarket, Vinayak Chowk Road, Opp. Rythu Bazar, Ponnar, Ravindra Nagar Colony, Adilabad 504001", slug: "adilabad-rythu-bazar-vegetable-market" }
+    ]
   },
   "bhadradri-kothagudem": {
-    area: "Kothagudem town",
-    display: "📍 Kothagudem Town — Rythu Bazar",
-    name: "Rythu Bazar, Kothagudem town",
-    location: "Kothagudem town, Bhadradri Kothagudem",
-    slug: "rythu-bazar-kothagudem-town"
+    area: "Coolie Lane, Kothagudem",
+    display: "📍 Coolie Lane — Kothagudem Rythu Bazar",
+    name: "Kothagudem Rythu Bazar",
+    location: "Rythu Bazar Road, Coolie Lane, Kothagudem, Telangana 507101",
+    landmark: "HJ38+PFQ, Coolie Lane, Bhadradri Kothagudem, Telangana 507101",
+    slug: "kothagudem-rythu-bazar",
+    markets: [
+      { name: "Kothagudem Rythu Bazar", location: "Rythu Bazar Road, Coolie Lane, Kothagudem, Telangana 507101", landmark: "HJ38+PFQ, Coolie Lane, Bhadradri Kothagudem, Telangana 507101", slug: "kothagudem-rythu-bazar" },
+      { name: "Yellandu Rythu Bazar", location: "Yellandu Road, Basthi Number 2, Yellandu, Telangana 507123", landmark: "Basthi Number 2, Yellandu", slug: "yellandu-rythu-bazar" }
+    ]
   },
   "hanamkonda": {
-    area: "Excise Colony",
-    display: "📍 Excise Colony — Rythu Bazar, Hanumakonda",
-    name: "Rythu Bazar, Excise Colony, Hanumakonda",
-    location: "Excise Colony Main Road, Hanumakonda – 506001",
-    slug: "rythu-bazar-excise-colony-hanumakonda"
+    area: "Ramnagar, Hanamkonda",
+    display: "📍 Ramnagar — Hanamkonda Rythu Bazar",
+    name: "Hanamkonda Rythu Bazar",
+    location: "NGO Colony Road, Depo Road, Near Old Bus Depot, Hanamkonda, Ramnagar, Warangal, Telangana 506001",
+    landmark: "Near Old Bus Depot, Ramnagar",
+    slug: "hanamkonda-rythu-bazar",
+    markets: [
+      { name: "Enumamula Rythu Bazar / Grain Market", location: "Sundaraiah Nagar, Grain Market, Enumamula, Warangal, Telangana 506006", landmark: "Enumamula Grain Market", slug: "enumamula-rythu-bazar-grain-market" },
+      { name: "Balasamudram Rythu Bazar", location: "2H45+6J6, Balasamudram, Hanamkonda, Telangana 506001", landmark: "Balasamudram", slug: "balasamudram-rythu-bazar" },
+      { name: "Hanamkonda Rythu Bazar", location: "NGO Colony Road, Depo Road, Near Old Bus Depot, Hanamkonda, Ramnagar, Warangal, Telangana 506001", landmark: "Near Old Bus Depot, Ramnagar", slug: "hanamkonda-rythu-bazar" }
+    ]
+  },
+  "warangal": {
+    area: "Enumamula, Warangal",
+    display: "📍 Enumamula — Grain Market, Warangal",
+    name: "Enumamula Rythu Bazar / Grain Market",
+    location: "Sundaraiah Nagar, Grain Market, Enumamula, Warangal, Telangana 506006",
+    landmark: "Enumamula Grain Market",
+    slug: "enumamula-rythu-bazar-grain-market",
+    markets: [
+      { name: "Enumamula Rythu Bazar / Grain Market", location: "Sundaraiah Nagar, Grain Market, Enumamula, Warangal, Telangana 506006", landmark: "Enumamula Grain Market", slug: "enumamula-rythu-bazar-grain-market" },
+      { name: "Balasamudram Rythu Bazar", location: "2H45+6J6, Balasamudram, Hanamkonda, Telangana 506001", landmark: "Balasamudram", slug: "balasamudram-rythu-bazar" },
+      { name: "Hanamkonda Rythu Bazar", location: "NGO Colony Road, Depo Road, Near Old Bus Depot, Hanamkonda, Ramnagar, Warangal, Telangana 506001", landmark: "Near Old Bus Depot, Ramnagar", slug: "hanamkonda-rythu-bazar" }
+    ]
   },
   "hyderabad": {
-    area: "Mehdipatnam",
-    display: "📍 Mehdipatnam — Rythu Bazar, Hyderabad",
-    name: "Rythu Bazar, Mehdipatnam, Hyderabad",
-    location: "Mehdipatnam–Banjara Hills Road, Royal Colony, Mehdipatnam, Hyderabad – 500006",
-    slug: "rythu-bazar-mehdipatnam-hyderabad"
+    area: "Malakpet Gunj, Hyderabad",
+    display: "📍 Malakpet Gunj — Malakpet Rythu Bazar",
+    name: "Malakpet Rythu Bazar",
+    location: "9GF3+MVH, Malakpet Gunj Road, Akbarbagh, Malakpet, Hyderabad, Telangana 500036",
+    landmark: "Malakpet Gunj",
+    slug: "malakpet-rythu-bazar",
+    markets: [
+      { name: "Malakpet Rythu Bazar", location: "9GF3+MVH, Malakpet Gunj Road, Akbarbagh, Malakpet, Hyderabad, Telangana 500036", landmark: "Malakpet Gunj", slug: "malakpet-rythu-bazar" },
+      { name: "Gudimalkapur Rythu Bazar", location: "9CMP+H5X, Alluri Sitarama Raju Nagar, Kanaka Durga Colony, Gudimalkapur, Hyderabad, Telangana 500006", landmark: "Kanaka Durga Colony, Gudimalkapur", slug: "gudimalkapur-rythu-bazar" },
+      { name: "Gudimalkapur Vegetable Market", location: "Vegetable Market, Alluri Sitarama Raju Nagar, Kanaka Durga Colony, Gudimalkapur, Hyderabad, Telangana 500006", landmark: "Gudimalkapur Vegetable Market", slug: "gudimalkapur-vegetable-market" }
+    ]
   },
   "jagtial": {
-    area: "Jagtial town",
-    display: "📍 Jagtial Town — Rythu Bazar",
-    name: "Rythu Bazar, Jagtial town",
-    location: "Jagtial town, Jagtial District",
-    slug: "rythu-bazar-jagtial-town"
+    area: "Brahma Wada, Jagtial",
+    display: "📍 Brahma Wada — Jagtial Rythu Bazar",
+    name: "Jagtial Rythu Bazar",
+    location: "QWW8+6V8, Brahma Wada, Jagtial, Telangana 505327",
+    landmark: "Brahma Wada",
+    slug: "jagtial-rythu-bazar",
+    markets: [
+      { name: "Jagtial Rythu Bazar", location: "QWW8+6V8, Brahma Wada, Jagtial, Telangana 505327", landmark: "Brahma Wada", slug: "jagtial-rythu-bazar" },
+      { name: "Jagtial Vegetable Market", location: "Tower Circle, Jagtial, Telangana 505327", landmark: "Tower Circle", slug: "jagtial-vegetable-market" },
+      { name: "Korutla Rythu Bazar", location: "RPH8+6Q2, Korutla, Telangana 505326", landmark: "Korutla", slug: "korutla-rythu-bazar" }
+    ]
   },
   "jangaon": {
-    area: "Jangaon town",
-    display: "📍 Jangaon Town — Rythu Bazar",
-    name: "Rythu Bazar, Jangaon town",
-    location: "Jangaon town, Jangaon District",
-    slug: "rythu-bazar-jangaon-town"
+    area: "Vegetable Market Street, Jangaon",
+    display: "📍 Vegetable Market Street — Jangaon Vegetable Market",
+    name: "Jangaon Vegetable Market",
+    location: "P5F4+V42, Vegetable Market Street, Jangaon, Telangana 506167",
+    landmark: "Jangaon Vegetable Market",
+    slug: "jangaon-vegetable-market",
+    markets: [
+      { name: "Jangaon Vegetable Market", location: "P5F4+V42, Vegetable Market Street, Jangaon, Telangana 506167", landmark: "Jangaon Vegetable Market", slug: "jangaon-vegetable-market" },
+      { name: "Jangaon Grain Market", location: "P5J5+P6, Jangaon-Chitakodur Road, Near Railway Station, Jangaon, Telangana 506167", landmark: "Near Jangaon Railway Station", slug: "jangaon-grain-market" }
+    ]
   },
   "jayashankar-bhupalpally": {
-    area: "Bhupalpally town",
-    display: "📍 Bhupalpally Town — Rythu Bazar",
-    name: "Rythu Bazar, Bhupalpally town",
-    location: "Bhupalpally town, Jayashankar Bhupalpally",
-    slug: "rythu-bazar-bhupalpally-town"
+    area: "Subash Colony, Bhupalpally",
+    display: "📍 Subash Colony — Bhupalpally Rythu Bazar",
+    name: "Bhupalpally Rythu Bazar",
+    location: "CVQ7+C6Q, Subash Colony, Bhupalpally, Telangana 506169",
+    landmark: "Subash Colony",
+    slug: "bhupalpally-rythu-bazar",
+    markets: [
+      { name: "Bhupalpally Rythu Bazar", location: "CVQ7+C6Q, Subash Colony, Bhupalpally, Telangana 506169", landmark: "Subash Colony", slug: "bhupalpally-rythu-bazar" }
+    ]
   },
   "jogulamba-gadwal": {
-    area: "Gadwal town",
-    display: "📍 Gadwal Town — Rythu Bazar",
-    name: "Rythu Bazar, Gadwal town",
-    location: "Gadwal town, Jogulamba Gadwal",
-    slug: "rythu-bazar-gadwal-town"
+    area: "Momin Mohalla, Gadwal",
+    display: "📍 Momin Mohalla — Gadwal Rythu Bazar",
+    name: "Gadwal Rythu Bazar",
+    location: "6QMX+X92, Momin Mohalla, Gadwal, Telangana 509125",
+    landmark: "Momin Mohalla",
+    slug: "gadwal-rythu-bazar",
+    markets: [
+      { name: "Gadwal Rythu Bazar", location: "6QMX+X92, Momin Mohalla, Gadwal, Telangana 509125", landmark: "Momin Mohalla", slug: "gadwal-rythu-bazar" },
+      { name: "Gadwal Vegetable Market", location: "6RP7+F86, Housing Board Colony, Gadwal, Telangana 509125", landmark: "Housing Board Colony", slug: "gadwal-vegetable-market" }
+    ]
   },
   "kamareddy": {
-    area: "Kamareddy town",
-    display: "📍 Kamareddy Town — Rythu Bazar",
-    name: "Rythu Bazar, Kamareddy town",
-    location: "Kamareddy town, Kamareddy District",
-    slug: "rythu-bazar-kamareddy-town"
+    area: "Lachapet, Kamareddy",
+    display: "📍 Lachapet — Kamareddy Rythu Bazar",
+    name: "Kamareddy Rythu Bazar",
+    location: "88FR+WJX, Lachapet, Kamareddy, Telangana 503111",
+    landmark: "Lachapet",
+    slug: "kamareddy-rythu-bazar",
+    markets: [
+      { name: "Kamareddy Rythu Bazar", location: "88FR+WJX, Lachapet, Kamareddy, Telangana 503111", landmark: "Lachapet", slug: "kamareddy-rythu-bazar" },
+      { name: "Kamareddy Vegetable Market", location: "88GJ+X9V, Sri Ram Nagar Colony, Ashok Nagar, Kamareddy, Telangana 503111", landmark: "Sri Ram Nagar Colony, Ashok Nagar", slug: "kamareddy-vegetable-market" },
+      { name: "Padmajiwadi Vegetable Market", location: "Padmajiwadi X Road, Kamareddy, Telangana 503111", landmark: "Padmajiwadi X Road", slug: "padmajiwadi-vegetable-market" }
+    ]
   },
   "karimnagar": {
-    area: "Karimnagar city",
-    display: "📍 Karimnagar City — Rythu Bazar",
-    name: "Rythu Bazar, Karimnagar city",
-    location: "Karimnagar city, Karimnagar District",
-    slug: "rythu-bazar-karimnagar-city"
+    area: "Saraswathi Nagar, Karimnagar",
+    display: "📍 Saraswathi Nagar — Karimnagar Rythu Bazar",
+    name: "Karimnagar Rythu Bazar",
+    location: "C4WP+7Q5, Saraswathi Nagar, Karimnagar, Telangana 505001",
+    landmark: "Saraswathi Nagar",
+    slug: "karimnagar-rythu-bazar",
+    markets: [
+      { name: "Karimnagar Rythu Bazar", location: "C4WP+7Q5, Saraswathi Nagar, Karimnagar, Telangana 505001", landmark: "Saraswathi Nagar", slug: "karimnagar-rythu-bazar" },
+      { name: "Karimnagar Vegetable Market", location: "Islampura, Ashoknagar, Karimnagar, Telangana 505001", landmark: "Islampura, Ashoknagar", slug: "karimnagar-vegetable-market" },
+      { name: "Sipada Rao Fruit Market", location: "Sipada Rao Fruit Market, Kisan Nagar, Karimnagar, Telangana 505001", landmark: "Kisan Nagar", slug: "sipada-rao-fruit-market" }
+    ]
   },
   "khammam": {
     area: "NSP Camp",
@@ -311,12 +378,20 @@ async function initDistricts() {
 
 async function loadMarketsForDistrict(districtSlug) {
   const meta = DISTRICT_RYTHU_BAZARS[districtSlug];
-  // Instantly populate with specific Rythu Bazar Area (Zero loading delay)
-  const defaultOption = meta
-    ? `<option value="${meta.slug}" selected>${meta.display}</option>`
-    : `<option value="" selected>📍 Primary Rythu Bazar</option>`;
-  
-  selMarket.innerHTML = defaultOption;
+
+  // Instantly populate from local markets array (zero loading delay)
+  if (meta && meta.markets && meta.markets.length > 0) {
+    const optionsHtml = meta.markets.map((m, idx) => {
+      const isRythu = m.name.toLowerCase().includes('rythu') || m.name.toLowerCase().includes('vegetable') || m.name.toLowerCase().includes('grain') || m.name.toLowerCase().includes('fruit');
+      const emoji = isRythu ? '📍' : '🏢';
+      return `<option value="${m.slug}" ${idx === 0 ? 'selected' : ''}>${emoji} ${m.name}</option>`;
+    }).join('');
+    selMarket.innerHTML = optionsHtml;
+  } else if (meta) {
+    selMarket.innerHTML = `<option value="${meta.slug}" selected>${meta.display}</option>`;
+  } else {
+    selMarket.innerHTML = `<option value="" selected>📍 Primary Rythu Bazar</option>`;
+  }
   selMarket.disabled = false;
   updateActiveBanner();
 
@@ -326,14 +401,9 @@ async function loadMarketsForDistrict(districtSlug) {
     if (Array.isArray(markets) && markets.length > 0) {
       let optionsHtml = '';
       markets.forEach((m, idx) => {
-        const isRythu = m.name.toLowerCase().includes('rythu');
-        let label = m.name;
-        if (isRythu && meta) {
-          label = meta.display;
-        } else if (!isRythu) {
-          label = `🏢 ${m.name}`;
-        }
-        optionsHtml += `<option value="${m.slug}" ${idx === 0 ? 'selected' : ''}>${label}</option>`;
+        const isRythu = m.name.toLowerCase().includes('rythu') || m.name.toLowerCase().includes('vegetable') || m.name.toLowerCase().includes('grain') || m.name.toLowerCase().includes('fruit');
+        const emoji = isRythu ? '📍' : '🏢';
+        optionsHtml += `<option value="${m.slug}" ${idx === 0 ? 'selected' : ''}>${emoji} ${m.name}</option>`;
       });
       selMarket.innerHTML = optionsHtml;
     }
