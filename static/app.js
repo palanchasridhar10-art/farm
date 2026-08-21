@@ -448,13 +448,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadAll();
 });
 
-function updateActiveBanner() {
+
+function _getActiveMarketMeta() {
   const dSlug = selDistrict.value;
   const selectedSlug = selMarket.value;
   const selectedText = selMarket.options[selMarket.selectedIndex]?.text?.replace(/^[📍🏢]\s*/, '') || '';
   const meta = DISTRICT_RYTHU_BAZARS[dSlug];
   const matchedMarket = meta?.markets?.find(m => m.slug === selectedSlug || m.name === selectedText);
+  return { meta, matchedMarket, selectedText, dSlug };
+}
 
+function updateActiveBanner() {
+  const { meta, matchedMarket, selectedText } = _getActiveMarketMeta();
   const titleEl = document.getElementById('bazar-banner-title');
   const addrEl  = document.getElementById('bazar-banner-address');
 
@@ -467,17 +472,49 @@ function updateActiveBanner() {
       titleEl.textContent = selectedText || 'Rythu Bazar';
     }
   }
+
   if (addrEl) {
+    let addrText = '';
     if (matchedMarket && matchedMarket.location) {
-      addrEl.textContent = `📍 ${matchedMarket.location}`;
+      addrText = matchedMarket.location;
     } else if (meta && meta.location) {
-      addrEl.textContent = `📍 ${meta.location}`;
+      addrText = meta.location;
     } else {
-      const dName = selDistrict.options[selDistrict.selectedIndex]?.text || dSlug;
-      addrEl.textContent = `📍 ${selectedText}, ${dName} District, Telangana`;
+      const dName = selDistrict.options[selDistrict.selectedIndex]?.text || '';
+      addrText = `${selectedText}, ${dName} District, Telangana`;
     }
+    addrEl.innerHTML = `📍 ${addrText} <span class="map-link-hint">↗ View on Maps</span>`;
+  }
+
+  // Update the header location button label
+  const locText = document.getElementById('btn-location-text');
+  if (locText) {
+    const name = matchedMarket?.name || meta?.name || 'Market';
+    // Shorten label to 'Maps' – tooltip/title has full name
+    locText.textContent = 'Maps';
+    const btn = document.getElementById('btn-map-location');
+    if (btn) btn.title = `Open "${name}" on Google Maps`;
   }
 }
+
+function openMarketMap() {
+  const { meta, matchedMarket, selectedText, dSlug } = _getActiveMarketMeta();
+
+  let searchQuery = '';
+  if (matchedMarket) {
+    // Prefer location string (address); fall back to name + Telangana
+    searchQuery = matchedMarket.location || `${matchedMarket.name}, Telangana`;
+  } else if (meta) {
+    searchQuery = meta.location || `${meta.name}, Telangana`;
+  } else {
+    searchQuery = `${selectedText}, ${dSlug}, Telangana`;
+  }
+
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`;
+  window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+}
+
+
 
 async function initDistricts() {
   try {

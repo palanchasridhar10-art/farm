@@ -68,6 +68,15 @@
         </select>
       </div>
 
+      <!-- LOCATION / GOOGLE MAPS REDIRECT COLUMN -->
+      <div class="select-group location-group">
+        <label class="select-label" for="btn-map-location">🗺️ Location</label>
+        <button id="btn-map-location" class="btn-location" onclick="openMarketMap()" type="button" title="Open exact market location on Google Maps">
+          <span class="btn-loc-pin">📍</span>
+          <span id="btn-location-text" class="btn-loc-text">Maps</span>
+          <span class="btn-loc-arrow">↗</span>
+        </button>
+      </div>
 
       <div class="select-group">
         <label class="select-label" for="sel-commodity">🌾 Crop / Commodity</label>
@@ -109,7 +118,7 @@
         <span class="state-pill">Telangana Agricultural Marketing</span>
       </div>
       <h2 id="bazar-banner-title" class="bazar-title">Rythu Bazar, Beet Market, Nalgonda</h2>
-      <p id="bazar-banner-address" class="bazar-address">📍 Beet Market, Hyderabad Road, Nalgonda – 508001</p>
+      <p id="bazar-banner-address" class="bazar-address" onclick="openMarketMap()" title="Click to view location in Google Maps">📍 Beet Market, Hyderabad Road, Nalgonda – 508001 <span class="map-link-hint">↗ View on Maps</span></p>
     </div>
     <div class="bazar-info-right">
       <span class="freshness" id="freshness-badge">🟢 Verified e-NAM Feed</span>

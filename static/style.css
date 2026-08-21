@@ -139,6 +139,43 @@ body {
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3) !important;
 }
 
+/* ─── LOCATION (GOOGLE MAPS) BUTTON ─── */
+.location-group { position: relative; }
+.btn-location {
+  background: #f0fdf4 !important;
+  border: 2px solid #22c55e !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 8px 16px !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+.btn-location:hover {
+  background: #22c55e !important;
+  color: #ffffff !important;
+  border-color: #16a34a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35) !important;
+}
+.btn-location:hover .btn-loc-arrow {
+  transform: translate(2px, -2px);
+}
+.btn-loc-pin { font-size: 14px; }
+.btn-loc-arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  opacity: 0.85;
+}
+
 .btn-chat {
   background: linear-gradient(135deg, #f59e0b, #d97706) !important;
   border: none !important;
@@ -208,7 +245,32 @@ body {
   color: #475569;
   margin-top: 3px;
   font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
 }
+.bazar-address:hover {
+  color: #15803d;
+}
+.bazar-address:hover .map-link-hint {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+.map-link-hint {
+  font-size: 11px;
+  font-weight: 700;
+  color: #16a34a;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 2px 8px;
+  border-radius: 12px;
+  opacity: 0.75;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
 .bazar-info-right { display: flex; gap: 10px; align-items: center; }
 
 /* ─── KPI CARDS ─── */
