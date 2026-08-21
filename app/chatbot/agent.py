@@ -18,22 +18,48 @@ def handle_chat(db: Session, message: str, language: str = "en") -> dict:
 
     if intent == "LIST_COMMODITIES":
         commodities = tool_list_supported_commodities(db)
-        names = [c["canonical_name"] for c in commodities]
-        answer = "Supported crops: " + ", ".join(names) if lang == "en" else "అందుబాటులో ఉన్న పంటలు: " + ", ".join(names)
+        categories = {}
+        for c in commodities:
+            cat = c.get("category", "General")
+            categories.setdefault(cat, []).append(c["canonical_name"] + (f" ({c['local_name_te']})" if c.get("local_name_te") and lang.startswith("te") else ""))
+        
+        if lang.startswith("te"):
+            lines = [f"🌾 అందుబాటులో ఉన్న పంటలు మొత్తం ({len(commodities)} రకాలు):"]
+            for cat, items in categories.items():
+                lines.append(f"\n📂 {cat}:\n  " + ", ".join(items))
+            answer = "\n".join(lines)
+        else:
+            lines = [f"🌾 All Supported Crops & Commodities ({len(commodities)} total):"]
+            for cat, items in categories.items():
+                lines.append(f"\n📂 {cat}:\n  " + ", ".join(items))
+            answer = "\n".join(lines)
         return {"answer": answer, "tools_used": ["list_supported_commodities"], "language": lang}
 
     if intent == "LIST_DISTRICTS":
         districts = tool_list_supported_districts(db)
-        answer = "Supported districts: " + ", ".join(districts) if lang == "en" else "అందుబాటులో ఉన్న జిల్లాలు: " + ", ".join(districts)
+        answer = "Supported districts (33): " + ", ".join(districts) if lang == "en" else "అందుబాటులో ఉన్న 33 జిల్లాలు: " + ", ".join(districts)
         return {"answer": answer, "tools_used": ["list_supported_districts"], "language": lang}
 
     if not commodity:
         commodities = tool_list_supported_commodities(db)
-        names = [c["canonical_name"] for c in commodities[:10]]
+        sample_crops = ["Tomato", "Cotton", "Turmeric", "Paddy / Rice", "Red Chilli", "Onion", "Groundnut", "Bengal Gram", "Green Gram", "Mango", "Potato", "Soybean", "Maize"]
         if lang.startswith("te"):
-            answer = "దయచేసి పంట పేరు చెప్పండి. ఉదా: టమాటా ధర నల్గొండలో ఎంత?\nఅందుబాటులో: " + ", ".join(names)
+            answer = (f"దయచేసి పంట పేరు చెప్పండి. ఉదాహరణకు:\n"
+                      f"• 'నల్గొండలో టమాటా ధర ఎంత?'\n"
+                      f"• 'పత్తి 7 రోజుల అంచనా'\n"
+                      f"• 'వరి మార్కెట్ పోలిక'\n"
+                      f"• 'మిర్చికి ఉత్తమ మార్కెట్ ఏది?'\n\n"
+                      f"🌾 అందుబాటులో ఉన్న పంటలు ({len(commodities)} రకాలు): " + ", ".join(sample_crops) + ", ...\n"
+                      f"(అన్ని పంటల జాబితా కోసం 'crops' అని టైప్ చేయండి)")
         else:
-            answer = "Please specify a crop. Try: 'tomato price in Nalgonda' or 'cotton forecast'\nSupported: " + ", ".join(names)
+            answer = (f"Please specify a crop or commodity. For example:\n"
+                      f"• 'Tomato price in Nalgonda'\n"
+                      f"• 'Cotton 7-day forecast'\n"
+                      f"• 'Compare Turmeric markets'\n"
+                      f"• 'Best market for Paddy'\n"
+                      f"• 'Red Chilli price in Khammam'\n\n"
+                      f"🌾 Supported crops ({len(commodities)} total): " + ", ".join(sample_crops) + ", ...\n"
+                      f"(Type 'crops' to view all {len(commodities)} commodities by category)")
         return {"answer": answer, "tools_used": [], "language": lang}
 
     if intent == "PRICE_FORECAST":
@@ -67,7 +93,7 @@ def handle_chat(db: Session, message: str, language: str = "en") -> dict:
         return {"answer": answer, "tools_used": ["get_current_price"], "result": res, "language": lang}
 
     if lang.startswith("te"):
-        answer = "నేను మార్కెట్ ధరలు, అంచనాలు మరియు పోలికలు అందించగలను. ఉదా: 'టమాటా ధర నల్గొండలో ఎంత?'"
+        answer = "నేను మార్కెట్ ధరలు, అంచనాలు మరియు పోలికలు అందించగలను. ఉదా: 'టమాటా ధర ఎంత?', 'పత్తి అంచనా', 'మిరప మార్కెట్లు పోల్చండి'."
     else:
-        answer = "I can help with market prices, forecasts, and comparisons. Try: 'tomato price in Nalgonda' or 'compare cotton markets'"
+        answer = "I can help with market prices, 7-day forecasts, and district comparisons for all crops. Try: 'Tomato price in Nalgonda' or 'Compare Cotton markets'."
     return {"answer": answer, "tools_used": [], "language": lang}

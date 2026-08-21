@@ -23,66 +23,68 @@ logger = logging.getLogger("uvicorn.error")
 # ─── ACCURATE 2025 BASE PRICES (INR/Quintal) ──────────────────────────────────
 # Sources: MSP 2025-26, APMC/e-NAM Telangana, Agmarknet, Nizamabad/Khammam mandis
 COMMODITY_PRICE_CONFIG = {
-    "Tomato": {
-        "base": 900.0,
-        "low": 500.0,
-        "high": 2500.0,
-        "daily_volatility": 0.05,   # High volatility — perishable vegetable
-    },
-    "Cotton": {
-        "base": 7900.0,
-        "low": 7200.0,
-        "high": 9000.0,
-        "daily_volatility": 0.012,  # Low — MSP-anchored commercial crop
-    },
-    "Turmeric": {
-        "base": 14500.0,
-        "low": 8500.0,
-        "high": 18000.0,
-        "daily_volatility": 0.025,  # Moderate — spice with seasonal swings
-    },
-    "Paddy / Rice": {
-        "base": 2450.0,
-        "low": 2200.0,
-        "high": 2800.0,
-        "daily_volatility": 0.008,  # Very low — government procurement support
-    },
-    "Maize": {
-        "base": 2050.0,
-        "low": 1700.0,
-        "high": 2600.0,
-        "daily_volatility": 0.018,
-    },
-    "Red Chilli": {
-        "base": 13000.0,
-        "low": 8000.0,
-        "high": 25000.0,
-        "daily_volatility": 0.035,  # High — grade/variety driven volatility
-    },
-    "Onion": {
-        "base": 2200.0,
-        "low": 800.0,
-        "high": 5000.0,
-        "daily_volatility": 0.055,  # Highest — most volatile vegetable in India
-    },
-    "Groundnut": {
-        "base": 7263.0,
-        "low": 6500.0,
-        "high": 8500.0,
-        "daily_volatility": 0.015,
-    },
-    "Bengal Gram": {
-        "base": 5650.0,
-        "low": 5000.0,
-        "high": 7000.0,
-        "daily_volatility": 0.012,
-    },
-    "Red Gram / Tur": {
-        "base": 8000.0,
-        "low": 7200.0,
-        "high": 10000.0,
-        "daily_volatility": 0.018,
-    },
+    # Vegetables
+    "Tomato": {"base": 900.0, "low": 500.0, "high": 2500.0, "daily_volatility": 0.05},
+    "Onion": {"base": 2200.0, "low": 800.0, "high": 5000.0, "daily_volatility": 0.055},
+    "Potato": {"base": 1800.0, "low": 1200.0, "high": 3000.0, "daily_volatility": 0.02},
+    "Green Chilli": {"base": 4500.0, "low": 2500.0, "high": 8000.0, "daily_volatility": 0.04},
+    "Brinjal": {"base": 1600.0, "low": 900.0, "high": 3200.0, "daily_volatility": 0.035},
+    "Bhendi": {"base": 2400.0, "low": 1200.0, "high": 4500.0, "daily_volatility": 0.035},
+    "Cabbage": {"base": 1200.0, "low": 600.0, "high": 2500.0, "daily_volatility": 0.03},
+    "Cauliflower": {"base": 1800.0, "low": 900.0, "high": 3500.0, "daily_volatility": 0.035},
+    "Carrot": {"base": 2800.0, "low": 1500.0, "high": 5000.0, "daily_volatility": 0.025},
+    "Ginger": {"base": 7500.0, "low": 4000.0, "high": 15000.0, "daily_volatility": 0.03},
+    "Garlic": {"base": 9500.0, "low": 5000.0, "high": 22000.0, "daily_volatility": 0.035},
+    "Bitter Gourd": {"base": 2800.0, "low": 1500.0, "high": 4800.0, "daily_volatility": 0.035},
+    "Bottle Gourd": {"base": 1400.0, "low": 800.0, "high": 2600.0, "daily_volatility": 0.03},
+    "Ridge Gourd": {"base": 2600.0, "low": 1400.0, "high": 4500.0, "daily_volatility": 0.035},
+    "Drumstick": {"base": 3500.0, "low": 1800.0, "high": 7500.0, "daily_volatility": 0.04},
+    "Capsicum": {"base": 4200.0, "low": 2200.0, "high": 7000.0, "daily_volatility": 0.035},
+
+    # Commercial & Cash Crops
+    "Cotton": {"base": 7900.0, "low": 7200.0, "high": 9000.0, "daily_volatility": 0.012},
+    "Sugarcane": {"base": 350.0, "low": 300.0, "high": 420.0, "daily_volatility": 0.005},
+    "Soybean": {"base": 4892.0, "low": 4200.0, "high": 5800.0, "daily_volatility": 0.015},
+    "Castor Seed": {"base": 6200.0, "low": 5400.0, "high": 7200.0, "daily_volatility": 0.015},
+    "Tobacco": {"base": 16000.0, "low": 12000.0, "high": 22000.0, "daily_volatility": 0.02},
+
+    # Spices
+    "Turmeric": {"base": 14500.0, "low": 8500.0, "high": 18000.0, "daily_volatility": 0.025},
+    "Red Chilli": {"base": 13000.0, "low": 8000.0, "high": 25000.0, "daily_volatility": 0.035},
+    "Coriander": {"base": 7800.0, "low": 6000.0, "high": 11000.0, "daily_volatility": 0.02},
+    "Cumin": {"base": 26000.0, "low": 18000.0, "high": 36000.0, "daily_volatility": 0.025},
+    "Black Pepper": {"base": 55000.0, "low": 42000.0, "high": 70000.0, "daily_volatility": 0.015},
+
+    # Cereals & Millets
+    "Paddy / Rice": {"base": 2450.0, "low": 2200.0, "high": 2800.0, "daily_volatility": 0.008},
+    "Maize": {"base": 2050.0, "low": 1700.0, "high": 2600.0, "daily_volatility": 0.018},
+    "Jowar": {"base": 3371.0, "low": 2800.0, "high": 4200.0, "daily_volatility": 0.012},
+    "Bajra": {"base": 2625.0, "low": 2200.0, "high": 3200.0, "daily_volatility": 0.012},
+    "Ragi": {"base": 4290.0, "low": 3600.0, "high": 5200.0, "daily_volatility": 0.012},
+    "Wheat": {"base": 2425.0, "low": 2100.0, "high": 2900.0, "daily_volatility": 0.01},
+
+    # Pulses
+    "Bengal Gram": {"base": 5650.0, "low": 5000.0, "high": 7000.0, "daily_volatility": 0.012},
+    "Red Gram / Tur": {"base": 8000.0, "low": 7200.0, "high": 10000.0, "daily_volatility": 0.018},
+    "Green Gram": {"base": 8682.0, "low": 7500.0, "high": 10500.0, "daily_volatility": 0.015},
+    "Black Gram": {"base": 7400.0, "low": 6500.0, "high": 9200.0, "daily_volatility": 0.015},
+
+    # Oilseeds
+    "Groundnut": {"base": 7263.0, "low": 6500.0, "high": 8500.0, "daily_volatility": 0.015},
+    "Sunflower": {"base": 7280.0, "low": 6400.0, "high": 8400.0, "daily_volatility": 0.015},
+    "Sesame": {"base": 9267.0, "low": 8000.0, "high": 11500.0, "daily_volatility": 0.02},
+    "Mustard": {"base": 5950.0, "low": 5200.0, "high": 7000.0, "daily_volatility": 0.012},
+    "Safflower": {"base": 5940.0, "low": 5000.0, "high": 6800.0, "daily_volatility": 0.012},
+
+    # Fruits
+    "Mango": {"base": 4500.0, "low": 2500.0, "high": 9000.0, "daily_volatility": 0.04},
+    "Sweet Orange": {"base": 3800.0, "low": 2400.0, "high": 6500.0, "daily_volatility": 0.025},
+    "Banana": {"base": 2200.0, "low": 1200.0, "high": 3800.0, "daily_volatility": 0.025},
+    "Papaya": {"base": 1800.0, "low": 1000.0, "high": 3000.0, "daily_volatility": 0.03},
+    "Guava": {"base": 3200.0, "low": 1800.0, "high": 5000.0, "daily_volatility": 0.03},
+    "Watermelon": {"base": 1100.0, "low": 600.0, "high": 2200.0, "daily_volatility": 0.04},
+    "Pomegranate": {"base": 8500.0, "low": 5000.0, "high": 14000.0, "daily_volatility": 0.025},
+    "Lemon": {"base": 4000.0, "low": 2000.0, "high": 9000.0, "daily_volatility": 0.035},
 }
 
 

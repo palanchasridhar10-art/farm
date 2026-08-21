@@ -31,9 +31,8 @@ async def lifespan(app: FastAPI):
         from app.db.models.district import District
         db = SessionLocal()
         try:
-            if not db.query(District).first():
-                from scripts.seed_data import seed_database
-                seed_database(db)
+            from scripts.seed_data import seed_database
+            seed_database(db)
         finally:
             db.close()
         logger.info("Database initialized successfully.")
