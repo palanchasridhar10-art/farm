@@ -144,165 +144,286 @@ const DISTRICT_RYTHU_BAZARS = {
     ]
   },
   "khammam": {
-    area: "NSP Camp",
-    display: "📍 NSP Camp — Integrated Rythu Bazar, Khammam",
-    name: "Integrated Rythu Bazar, NSP Camp, Khammam",
-    location: "NSP Camp, Khammam, Telangana",
-    slug: "integrated-rythu-bazar-nsp-camp-khammam"
+    area: "Rajendra Nagar, Khammam",
+    display: "📍 Rajendra Nagar — Khammam Rythu Bazar",
+    name: "Khammam Rythu Bazar",
+    location: "Kodad–Khammam Road, Rajendra Nagar, Prakash Nagar, Khammam, Telangana 507003",
+    landmark: "Kodad–Khammam Road, Prakash Nagar",
+    slug: "khammam-rythu-bazar",
+    markets: [
+      { name: "Khammam Rythu Bazar", location: "Kodad–Khammam Road, Rajendra Nagar, Prakash Nagar, Khammam, Telangana 507003", landmark: "Kodad–Khammam Road, Prakash Nagar", slug: "khammam-rythu-bazar" },
+      { name: "Madhira Rythu Bazar", location: "Vijayawada–Warangal Line, Madhira, Telangana 507203", landmark: "Vijayawada–Warangal Line, Madhira", slug: "madhira-rythu-bazar" },
+      { name: "Wyra Rythu Bazar", location: "59M4+QX4, Madhira–Wyra Road, Sundaraiah Nagar, Wyra, Khammam, Telangana 507165", landmark: "Madhira–Wyra Road, Sundaraiah Nagar, Wyra", slug: "wyra-rythu-bazar" }
+    ]
   },
   "komaram-bheem-asifabad": {
-    area: "Asifabad town",
-    display: "📍 Asifabad Town — Rythu Bazar",
-    name: "Rythu Bazar, Asifabad town",
-    location: "Asifabad town, Kumuram Bheem Asifabad",
-    slug: "rythu-bazar-asifabad-town"
+    area: "Jubilee Market Road, Asifabad",
+    display: "📍 Jubilee Market Road — Asifabad Rythu Bazar",
+    name: "Asifabad Rythu Bazar",
+    location: "977V+FX8, Jubilee Market Road, Asifabad, Telangana 504293",
+    landmark: "Jubilee Market Road, Asifabad",
+    slug: "asifabad-rythu-bazar",
+    markets: [
+      { name: "Asifabad Rythu Bazar", location: "977V+FX8, Jubilee Market Road, Asifabad, Telangana 504293", landmark: "Jubilee Market Road, Asifabad", slug: "asifabad-rythu-bazar" }
+    ]
   },
   "mahabubabad": {
-    area: "Mahabubabad town",
-    display: "📍 Mahabubabad Town — Rythu Bazar",
-    name: "Rythu Bazar, Mahabubabad town",
-    location: "Mahabubabad town, Mahabubabad District",
-    slug: "rythu-bazar-mahabubabad-town"
+    area: "Mahabubabad",
+    display: "📍 Mahabubabad — Mahabubabad Rythu Bazar",
+    name: "Mahabubabad Rythu Bazar",
+    location: "H2V6+443, Mahabubabad, Telangana 506101",
+    landmark: "Mahabubabad",
+    slug: "mahabubabad-rythu-bazar",
+    markets: [
+      { name: "Mahabubabad Rythu Bazar", location: "H2V6+443, Mahabubabad, Telangana 506101", landmark: "Mahabubabad", slug: "mahabubabad-rythu-bazar" },
+      { name: "Kesamudram Rythu Bazar", location: "MVQR+M94, Kesamudram, Telangana 506112", landmark: "Kesamudram", slug: "kesamudram-rythu-bazar" },
+      { name: "Mahabubabad Vegetable Market", location: "Near Railway Station, Mahabubabad, Telangana 506101", landmark: "Near Mahabubabad Railway Station", slug: "mahabubabad-vegetable-market" }
+    ]
   },
   "mahabubnagar": {
-    area: "Mahabubnagar town",
-    display: "📍 Mahabubnagar Town — Rythu Bazar",
-    name: "Rythu Bazar, Mahabubnagar town",
-    location: "Mahabubnagar town, Mahabubnagar District",
-    slug: "rythu-bazar-mahabubnagar-town"
+    area: "Ramaiah Bowli, Mahbubnagar",
+    display: "📍 Ramaiah Bowli — Mahabubnagar Rythu Bazar",
+    name: "Mahabubnagar Rythu Bazar",
+    location: "PXRR+Q5Q, Ramaiah Bowli, Mahbubnagar, Telangana 509001",
+    landmark: "Ramaiah Bowli",
+    slug: "mahabubnagar-rythu-bazar",
+    markets: [
+      { name: "Mahabubnagar Rythu Bazar", location: "PXRR+Q5Q, Ramaiah Bowli, Mahbubnagar, Telangana 509001", landmark: "Ramaiah Bowli", slug: "mahabubnagar-rythu-bazar" },
+      { name: "Jadcherla Vegetable Market", location: "Shop No. 26, Vegetable Market, Jadcherla, Badepalle, Telangana 509301", landmark: "Jadcherla Vegetable Market", slug: "jadcherla-vegetable-market" }
+    ]
   },
   "mancherial": {
-    area: "Mancherial town",
-    display: "📍 Mancherial Town — Rythu Bazar",
-    name: "Rythu Bazar, Mancherial town",
-    location: "Mancherial town, Mancherial District",
-    slug: "rythu-bazar-mancherial-town"
+    area: "Iqbal Ahmed Nagar, Mancherial",
+    display: "📍 Iqbal Ahmed Nagar — Mancherial Rythu Bazar",
+    name: "Mancherial Rythu Bazar",
+    location: "Market Road, Iqbal Ahmed Nagar, Mancherial, Telangana 504208",
+    landmark: "Market Road, Iqbal Ahmed Nagar",
+    slug: "mancherial-rythu-bazar",
+    markets: [
+      { name: "Mancherial Rythu Bazar", location: "Market Road, Iqbal Ahmed Nagar, Mancherial, Telangana 504208", landmark: "Market Road, Iqbal Ahmed Nagar", slug: "mancherial-rythu-bazar" },
+      { name: "Mancherial Vegetable Market", location: "VF67+R8P, Thollavagu, Mancherial, Telangana 504208", landmark: "Thollavagu, Mancherial", slug: "mancherial-vegetable-market" },
+      { name: "Bellampalle Rythu Bazar", location: "3F7M+2J, Mancherial Road, Bellampalle, Telangana 504251", landmark: "Mancherial Road, Bellampalle", slug: "bellampalle-rythu-bazar" }
+    ]
   },
   "medak": {
-    area: "Medak town",
-    display: "📍 Medak Town — Rythu Bazar",
-    name: "Rythu Bazar, Medak town",
-    location: "Medak town, Medak District",
-    slug: "rythu-bazar-medak-town"
+    area: "Yeddumailaram, Medak",
+    display: "📍 Yeddumailaram — Yeddumailaram Rythu Bazar",
+    name: "Yeddumailaram Rythu Bazar",
+    location: "G42W+335, Yeddumailaram, Telangana 502205",
+    landmark: "Yeddumailaram",
+    slug: "yeddumailaram-rythu-bazar",
+    markets: [
+      { name: "Yeddumailaram Rythu Bazar", location: "G42W+335, Yeddumailaram, Telangana 502205", landmark: "Yeddumailaram", slug: "yeddumailaram-rythu-bazar" },
+      { name: "Tupran Rythu Bazar", location: "RFVG+GF5, Tupran, Telangana 502334", landmark: "Tupran", slug: "tupran-rythu-bazar" },
+      { name: "Tupran Vegetable Market", location: "RFPF+RHX, Tupran, Telangana 502334", landmark: "Tupran", slug: "tupran-vegetable-market" }
+    ]
   },
   "medchal-malkajgiri": {
-    area: "Bowenpally",
-    display: "📍 Bowenpally — Rythu Bazar, Medchal–Malkajgiri",
-    name: "Rythu Bazar, Bowenpally",
-    location: "Bowenpally / Secunderabad area, Medchal–Malkajgiri",
-    slug: "rythu-bazar-bowenpally"
+    area: "Mallikarjuna Nagar, Malkajgiri",
+    display: "📍 Malkajgiri — Malkajgiri Rythu Bazar",
+    name: "Malkajgiri Rythu Bazar",
+    location: "CGXG+XPR, Indira Nehru Nagar, Mallikarjuna Nagar, Malkajgiri, Secunderabad, Telangana 500047",
+    landmark: "Indira Nehru Nagar, Malkajgiri",
+    slug: "malkajgiri-rythu-bazar",
+    markets: [
+      { name: "Malkajgiri Rythu Bazar", location: "CGXG+XPR, Indira Nehru Nagar, Mallikarjuna Nagar, Malkajgiri, Secunderabad, Telangana 500047", landmark: "Indira Nehru Nagar, Malkajgiri", slug: "malkajgiri-rythu-bazar" },
+      { name: "Gudimalkapur Vegetable Market", location: "Vegetable Market, Alluri Sitarama Raju Nagar, Kanaka Durga Colony, Gudimalkapur, Hyderabad, Telangana 500006", landmark: "Gudimalkapur Vegetable Market", slug: "gudimalkapur-vegetable-market-medchal" }
+    ]
   },
   "mulugu": {
-    area: "Mulugu town",
-    display: "📍 Mulugu Town — Rythu Bazar",
-    name: "Rythu Bazar, Mulugu town",
-    location: "Mulugu town, Mulugu District",
-    slug: "rythu-bazar-mulugu-town"
+    area: "Borenarsapur, Mulugu",
+    display: "📍 Borenarsapur — Mulugu Rythu Bazar",
+    name: "Mulugu Rythu Bazar",
+    location: "7G42+6JH, Burgampadu–Eturnagaram Road, Borenarsapur, Telangana 506172",
+    landmark: "Burgampadu–Eturnagaram Road, Borenarsapur",
+    slug: "mulugu-rythu-bazar",
+    markets: [
+      { name: "Mulugu Rythu Bazar", location: "7G42+6JH, Burgampadu–Eturnagaram Road, Borenarsapur, Telangana 506172", landmark: "Burgampadu–Eturnagaram Road, Borenarsapur", slug: "mulugu-rythu-bazar" }
+    ]
   },
   "nagarkurnool": {
     area: "Nagarkurnool town",
     display: "📍 Nagarkurnool Town — Rythu Bazar",
     name: "Rythu Bazar, Nagarkurnool town",
     location: "Nagarkurnool town, Nagarkurnool District",
-    slug: "rythu-bazar-nagarkurnool-town"
+    slug: "rythu-bazar-nagarkurnool-town",
+    markets: [
+      { name: "Rythu Bazar, Nagarkurnool town", location: "Nagarkurnool town, Nagarkurnool District", landmark: "Nagarkurnool town", slug: "rythu-bazar-nagarkurnool-town" }
+    ]
   },
   "nalgonda": {
-    area: "Beet Market",
-    display: "📍 Beet Market — Rythu Bazar, Nalgonda",
-    name: "Rythu Bazar, Beet Market, Nalgonda",
-    location: "Beet Market, Hyderabad Road, Nalgonda – 508001",
-    slug: "rythu-bazar-beet-market-nalgonda"
+    area: "New Prakasham Bazar, Nalgonda",
+    display: "📍 Prakasham Bazar — Nalgonda Rythu Bazar",
+    name: "Nalgonda Rythu Bazar",
+    location: "Shop 01, Prakasham Bazar Road, New Prakasham Bazar, Bottu Guda, Nalgonda, Telangana 508001",
+    landmark: "New Prakasham Bazar, Bottu Guda, Nalgonda",
+    slug: "nalgonda-rythu-bazar",
+    markets: [
+      { name: "Nalgonda Rythu Bazar", location: "Shop 01, Prakasham Bazar Road, New Prakasham Bazar, Bottu Guda, Nalgonda, Telangana 508001", landmark: "New Prakasham Bazar, Bottu Guda", slug: "nalgonda-rythu-bazar" },
+      { name: "Nalgonda Beet Market", location: "Beet Market, Hyderabad Road, Nalgonda, Telangana 508001", landmark: "Beet Market, Hyderabad Road, Nalgonda", slug: "nalgonda-beet-market" },
+      { name: "Miryalaguda Vegetable Market", location: "Vegetable Market, Market Road, Doctors Colony, Miryalaguda, Telangana 508207", landmark: "Market Road, Doctors Colony, Miryalaguda", slug: "miryalaguda-vegetable-market" }
+    ]
   },
   "narayanpet": {
-    area: "Narayanpet town",
-    display: "📍 Narayanpet Town — Rythu Bazar",
-    name: "Rythu Bazar, Narayanpet town",
-    location: "Narayanpet town, Narayanpet District",
-    slug: "rythu-bazar-narayanpet-town"
+    area: "Narayanpet–Jajapur Road, Narayanpet",
+    display: "📍 Narayanpet — Narayanpet Rythu Bazar",
+    name: "Narayanpet Rythu Bazar",
+    location: "PGP4+5P8, Narayanpet–Jajapur Road, Narayanpet, Telangana 509210",
+    landmark: "Narayanpet–Jajapur Road",
+    slug: "narayanpet-rythu-bazar",
+    markets: [
+      { name: "Narayanpet Rythu Bazar", location: "PGP4+5P8, Narayanpet–Jajapur Road, Narayanpet, Telangana 509210", landmark: "Narayanpet–Jajapur Road", slug: "narayanpet-rythu-bazar" },
+      { name: "Kosgi Rythu Bazar", location: "XPQ4+JP3, Kosgi, Telangana 509339", landmark: "Kosgi", slug: "kosgi-rythu-bazar" },
+      { name: "Kosgi Vegetable Market", location: "XPQ8+293, Kosgi, Telangana 509339", landmark: "Kosgi", slug: "kosgi-vegetable-market" }
+    ]
   },
   "nirmal": {
-    area: "Nirmal town",
-    display: "📍 Nirmal Town — Rythu Bazar",
-    name: "Rythu Bazar, Nirmal town",
-    location: "Nirmal town, Nirmal District",
-    slug: "rythu-bazar-nirmal-town"
+    area: "Balajiwada, Nirmal",
+    display: "📍 Balajiwada — Nirmal Rythu Bazar",
+    name: "Nirmal Rythu Bazar",
+    location: "482X+53X, Balajiwada, Bagulwada, Nirmal, Telangana 504106",
+    landmark: "Balajiwada, Bagulwada, Nirmal",
+    slug: "nirmal-rythu-bazar",
+    markets: [
+      { name: "Nirmal Rythu Bazar", location: "482X+53X, Balajiwada, Bagulwada, Nirmal, Telangana 504106", landmark: "Balajiwada, Bagulwada, Nirmal", slug: "nirmal-rythu-bazar" },
+      { name: "Nirmal Vegetable Market", location: "486R+2XR, Naidiwada, Nirmal, Telangana 504106", landmark: "Naidiwada, Nirmal", slug: "nirmal-vegetable-market" },
+      { name: "Bhainsa Rythu Bazar", location: "4X56+39P, Gandhi Gunj Road, Bhainsa, Telangana 504103", landmark: "Gandhi Gunj Road, Bhainsa", slug: "bhainsa-rythu-bazar" }
+    ]
   },
   "nizamabad": {
-    area: "Nizamabad city",
-    display: "📍 Nizamabad City — Rythu Bazar",
-    name: "Rythu Bazar, Nizamabad city",
-    location: "Nizamabad city, Nizamabad District",
-    slug: "rythu-bazar-nizamabad-city"
+    area: "Dubba Road, Nizamabad",
+    display: "📍 Dubba Road — Nizamabad Rythu Bazar",
+    name: "Nizamabad Rythu Bazar",
+    location: "M3JR+MPP, Dubba Road, Shradhanand Gunj, Ambedkar Colony, Nizamabad, Telangana 503003",
+    landmark: "Dubba Road, Shradhanand Gunj, Ambedkar Colony",
+    slug: "nizamabad-rythu-bazar",
+    markets: [
+      { name: "Nizamabad Rythu Bazar", location: "M3JR+MPP, Dubba Road, Shradhanand Gunj, Ambedkar Colony, Nizamabad, Telangana 503003", landmark: "Dubba Road, Shradhanand Gunj", slug: "nizamabad-rythu-bazar" },
+      { name: "Nizamabad Gandhi Gunj Market", location: "M3GW+79, 7-8-24, Gandhi Gunj Road, Kumar Gali, Nizamabad, Telangana 503001", landmark: "Gandhi Gunj Road, Kumar Gali", slug: "nizamabad-gandhi-gunj-market" },
+      { name: "Shradhanand Gunj Vegetable Market", location: "M3HR+C93, Shradhanand Gunj, Ambedkar Colony, Nizamabad, Telangana 503001", landmark: "Shradhanand Gunj, Ambedkar Colony", slug: "shradhanand-gunj-vegetable-market" },
+      { name: "Ahmedhi Bazar", location: "Ahmedhi Bazar, Quilla Road, Barkatpura, Nizamabad, Telangana 503001", landmark: "Quilla Road, Barkatpura", slug: "ahmedhi-bazar-nizamabad" },
+      { name: "Nizamabad NGO Colony Market", location: "Old NGOs Colony, NGO Colony, Nizamabad, Telangana 503002", landmark: "NGO Colony, Nizamabad", slug: "nizamabad-ngo-colony-market" }
+    ]
   },
   "peddapalli": {
-    area: "Peddapalli town",
-    display: "📍 Peddapalli Town — Rythu Bazar",
-    name: "Rythu Bazar, Peddapalli town",
-    location: "Peddapalli town, Peddapalli District",
-    slug: "rythu-bazar-peddapalli-town"
+    area: "Sagar Road, Peddapalli",
+    display: "📍 Sagar Road — Peddapalli Rythu Bazar",
+    name: "Peddapalli Rythu Bazar",
+    location: "Sagar Road, Peddapalli, Telangana 505172",
+    landmark: "Sagar Road, Peddapalli",
+    slug: "peddapalli-rythu-bazar",
+    markets: [
+      { name: "Peddapalli Rythu Bazar", location: "Sagar Road, Peddapalli, Telangana 505172", landmark: "Sagar Road, Peddapalli", slug: "peddapalli-rythu-bazar" },
+      { name: "Godavarikhani Rythu Bazar", location: "Ram Nagar, Jawahar Nagar, Godavarikhani, Ramagundam, Telangana 505209", landmark: "Ram Nagar, Jawahar Nagar, Godavarikhani", slug: "godavarikhani-rythu-bazar" }
+    ]
   },
   "rajanna-sircilla": {
-    area: "Sircilla town",
-    display: "📍 Sircilla Town — Rythu Bazar",
-    name: "Rythu Bazar, Sircilla town",
-    location: "Sircilla town, Rajanna Sircilla",
-    slug: "rythu-bazar-sircilla-town"
+    area: "Gandhi Nagar, Sircilla",
+    display: "📍 Gandhi Nagar — Sircilla Rythu Bazar",
+    name: "Sircilla Rythu Bazar",
+    location: "Shop No. 72, Market Area, Municipal Complex, Market Road, Gandhi Nagar, Rajanna Sircilla, Sircilla, Telangana 505301",
+    landmark: "Municipal Complex, Market Road, Gandhi Nagar, Sircilla",
+    slug: "sircilla-rythu-bazar",
+    markets: [
+      { name: "Sircilla Rythu Bazar", location: "Shop No. 72, Market Area, Municipal Complex, Market Road, Gandhi Nagar, Rajanna Sircilla, Sircilla, Telangana 505301", landmark: "Municipal Complex, Market Road, Gandhi Nagar", slug: "sircilla-rythu-bazar" }
+    ]
   },
   "rangareddy": {
-    area: "Vanasthalipuram",
-    display: "📍 Vanasthalipuram — Rythu Bazar, Rangareddy",
-    name: "Rythu Bazar, Vanasthalipuram",
-    location: "Vanasthalipuram, Hyderabad – 500070, Rangareddy",
-    slug: "rythu-bazar-vanasthalipuram"
+    area: "Shamshabad, Hyderabad",
+    display: "📍 Shamshabad — Shamshabad Rythu Bazar",
+    name: "Shamshabad Rythu Bazar",
+    location: "797V+X7H, National Highway 7, Shamshabad, Hyderabad, Telangana 501218",
+    landmark: "National Highway 7, Shamshabad",
+    slug: "shamshabad-rythu-bazar",
+    markets: [
+      { name: "Shamshabad Rythu Bazar", location: "797V+X7H, National Highway 7, Shamshabad, Hyderabad, Telangana 501218", landmark: "National Highway 7, Shamshabad", slug: "shamshabad-rythu-bazar" },
+      { name: "Badepalle Rythu Bazar", location: "Q43W+89M, Badepalle, Telangana 509301", landmark: "Badepalle", slug: "badepalle-rythu-bazar" },
+      { name: "Chevella Rythu Bazar", location: "846Q+7X6, Chevella, Telangana 501503", landmark: "Chevella", slug: "chevella-rythu-bazar" }
+    ]
   },
   "sangareddy": {
-    area: "Sangareddy town",
-    display: "📍 Sangareddy Town — Rythu Bazar",
-    name: "Rythu Bazar, Sangareddy town",
-    location: "Sangareddy town, Sangareddy District",
-    slug: "rythu-bazar-sangareddy-town"
+    area: "Habeeb Nagar, Sangareddy",
+    display: "📍 Habeeb Nagar — Sangareddy Rythu Bazar",
+    name: "Sangareddy Rythu Bazar",
+    location: "J39H+2X, Habeeb Nagar, Sangareddy, Telangana 502001",
+    landmark: "Habeeb Nagar, Sangareddy",
+    slug: "sangareddy-rythu-bazar",
+    markets: [
+      { name: "Sadashivpet Rythu Bazar", location: "JX96+73, Sadashivpet, Telangana 502291", landmark: "Sadashivpet", slug: "sadashivpet-rythu-bazar" },
+      { name: "Sangareddy Rythu Bazar", location: "J39H+2X, Habeeb Nagar, Sangareddy, Telangana 502001", landmark: "Habeeb Nagar, Sangareddy", slug: "sangareddy-rythu-bazar" },
+      { name: "Sangareddy Vegetable Market", location: "J3CH+87X, Rajampet Road, Habeeb Nagar, Sangareddy, Telangana 502001", landmark: "Rajampet Road, Habeeb Nagar", slug: "sangareddy-vegetable-market" }
+    ]
   },
   "siddipet": {
-    area: "Siddipet town",
-    display: "📍 Siddipet Town — Rythu Bazar",
-    name: "Rythu Bazar, Siddipet town",
-    location: "Siddipet town, Siddipet District",
-    slug: "rythu-bazar-siddipet-town"
+    area: "Parupalliveedhi, Siddipet",
+    display: "📍 Parupalliveedhi — Siddipet Rythu Bazar",
+    name: "Siddipet Rythu Bazar",
+    location: "4V45+4H3, Parupalliveedhi, Siddipet, Telangana 502103",
+    landmark: "Parupalliveedhi, Siddipet",
+    slug: "siddipet-rythu-bazar",
+    markets: [
+      { name: "Siddipet Rythu Bazar", location: "4V45+4H3, Parupalliveedhi, Siddipet, Telangana 502103", landmark: "Parupalliveedhi, Siddipet", slug: "siddipet-rythu-bazar" },
+      { name: "Siddipet Vegetable Market", location: "4V6H+QW, Siddipet, Telangana 502267", landmark: "Siddipet", slug: "siddipet-vegetable-market" }
+    ]
   },
   "suryapet": {
-    area: "Suryapet town",
-    display: "📍 Suryapet Town — Rythu Bazar",
-    name: "Rythu Bazar, Suryapet town",
-    location: "Suryapet town, Suryapet District",
-    slug: "rythu-bazar-suryapet-town"
+    area: "Barlapenta Bazaar, Suryapet",
+    display: "📍 Barlapenta Bazaar — Suryapet Rythu Bazar",
+    name: "Suryapet Rythu Bazar",
+    location: "4JR9+CFR, Barlapenta Bazaar, Suryapet, Telangana 508213",
+    landmark: "Barlapenta Bazaar, Suryapet",
+    slug: "suryapet-rythu-bazar",
+    markets: [
+      { name: "Suryapet Rythu Bazar", location: "4JR9+CFR, Barlapenta Bazaar, Suryapet, Telangana 508213", landmark: "Barlapenta Bazaar, Suryapet", slug: "suryapet-rythu-bazar" },
+      { name: "Suryapet Vegetable Market", location: "4JPR+JHX, Vijayawada Highway, Ambedkar Nagar, Suryapet, Telangana 508213", landmark: "Vijayawada Highway, Ambedkar Nagar", slug: "suryapet-vegetable-market" }
+    ]
   },
   "vikarabad": {
-    area: "Vikarabad town",
-    display: "📍 Vikarabad Town — Rythu Bazar",
-    name: "Rythu Bazar, Vikarabad town",
-    location: "Vikarabad town, Vikarabad District",
-    slug: "rythu-bazar-vikarabad-town"
+    area: "Nehrugunj, Tandur",
+    display: "📍 Nehrugunj — Tandur Rythu Bazar",
+    name: "Tandur Rythu Bazar",
+    location: "7H5P+2XP, Nehrugunj, Tandur, Rangareddy, Telangana 501141",
+    landmark: "Nehrugunj, Tandur",
+    slug: "tandur-rythu-bazar",
+    markets: [
+      { name: "Tandur Rythu Bazar", location: "7H5P+2XP, Nehrugunj, Tandur, Rangareddy, Telangana 501141", landmark: "Nehrugunj, Tandur", slug: "tandur-rythu-bazar" },
+      { name: "Tandur Vegetable Market", location: "74 6.7, Dargah Road, Brindavan Colony, Tandur, Telangana 501141", landmark: "Dargah Road, Brindavan Colony, Tandur", slug: "tandur-vegetable-market" },
+      { name: "Vikarabad Rythu Bazar", location: "8WR4+7HJ, New Gunj, Vikarabad, Telangana 501101", landmark: "New Gunj, Vikarabad", slug: "vikarabad-rythu-bazar" }
+    ]
   },
   "wanaparthy": {
     area: "Wanaparthy town",
     display: "📍 Wanaparthy Town — Rythu Bazar",
     name: "Rythu Bazar, Wanaparthy town",
     location: "Wanaparthy town, Wanaparthy District",
-    slug: "rythu-bazar-wanaparthy-town"
+    slug: "rythu-bazar-wanaparthy-town",
+    markets: [
+      { name: "Rythu Bazar, Wanaparthy town", location: "Wanaparthy town, Wanaparthy District", landmark: "Wanaparthy town", slug: "rythu-bazar-wanaparthy-town" }
+    ]
   },
   "warangal": {
-    area: "Shambunipet",
-    display: "📍 Shambunipet — Rythu Bazar, Warangal",
-    name: "Rythu Bazar, Shambunipet, Warangal",
-    location: "Shambunipet, Warangal, Telangana",
-    slug: "rythu-bazar-shambunipet-warangal"
+    area: "Ramannapet, Warangal",
+    display: "📍 Ramannapet — Ramannapet Rythu Bazar",
+    name: "Ramannapet Rythu Bazar",
+    location: "XHHV+5Q3, Ramannapet, Warangal, Telangana 506002",
+    landmark: "Ramannapet, Warangal",
+    slug: "ramannapet-rythu-bazar",
+    markets: [
+      { name: "Ramannapet Rythu Bazar", location: "XHHV+5Q3, Ramannapet, Warangal, Telangana 506002", landmark: "Ramannapet, Warangal", slug: "ramannapet-rythu-bazar" },
+      { name: "Girmajipet Vegetable Market", location: "XJH4+367, Girmajipet, Warangal, Telangana 506002", landmark: "Girmajipet, Warangal", slug: "girmajipet-vegetable-market" }
+    ]
   },
   "yadadri-bhuvanagiri": {
-    area: "Bhongir town",
-    display: "📍 Bhongir Town — Rythu Bazar",
-    name: "Rythu Bazar, Bhongir town",
-    location: "Bhongir town, Yadadri Bhuvanagiri",
-    slug: "rythu-bazar-bhongir-town"
+    area: "Chityala, Yadadri",
+    display: "📍 Chityala — Chityala Rythu Bazar",
+    name: "Chityala Rythu Bazar",
+    location: "C33M+GCG, Chityala, Telangana 509206",
+    landmark: "Chityala",
+    slug: "chityala-rythu-bazar",
+    markets: [
+      { name: "Chityala Rythu Bazar", location: "C33M+GCG, Chityala, Telangana 509206", landmark: "Chityala", slug: "chityala-rythu-bazar" },
+      { name: "Bhuvanagiri Rythu Bazar", location: "GV8P+746, Main Road, Medikuntapally, Bhuvanagiri, Telangana 508116", landmark: "Main Road, Medikuntapally, Bhuvanagiri", slug: "bhuvanagiri-rythu-bazar" }
+    ]
   }
 };
 
