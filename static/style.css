@@ -51,33 +51,14 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
-  position: relative;
-}
-
-/* Full-viewport farmer field background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background-image: url('/static/farmer_field_bg.jpg');
+  background-color: #e8f5e9;
+  background-image: 
+    linear-gradient(180deg, rgba(255, 255, 240, 0.45) 0%, rgba(240, 253, 244, 0.52) 40%, rgba(254, 252, 232, 0.58) 100%),
+    url('/static/farmer_field_bg.jpg');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-}
-
-/* Bright warm overlay — keeps content readable while the scene shines through */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(180deg,
-      rgba(255, 255, 240, 0.55) 0%,
-      rgba(240, 253, 244, 0.62) 40%,
-      rgba(254, 252, 232, 0.68) 100%);
-  backdrop-filter: brightness(1.12) saturate(1.1);
+  background-attachment: fixed;
 }
 
 /* ─── HEADER (Glassmorphic Canopy over Field) ─── */
