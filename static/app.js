@@ -318,14 +318,14 @@ const DISTRICT_RYTHU_BAZARS = {
     ]
   },
   "rangareddy": {
-    area: "Shamshabad, Hyderabad",
-    display: "📍 Shamshabad — Shamshabad Rythu Bazar",
+    area: "Sidenti, Shamshabad",
+    display: "📍 Sidenti — Shamshabad Rythu Bazar",
     name: "Shamshabad Rythu Bazar",
-    location: "797V+X7H, National Highway 7, Shamshabad, Hyderabad, Telangana 501218",
-    landmark: "National Highway 7, Shamshabad",
+    location: "Sidenti, Shamshabad, Rangareddy, Telangana 501218",
+    landmark: "Opp. Indra Hospital, Sidenti, Shamshabad",
     slug: "shamshabad-rythu-bazar",
     markets: [
-      { name: "Shamshabad Rythu Bazar", location: "797V+X7H, National Highway 7, Shamshabad, Hyderabad, Telangana 501218", landmark: "National Highway 7, Shamshabad", slug: "shamshabad-rythu-bazar" },
+      { name: "Shamshabad Rythu Bazar", location: "Sidenti, Shamshabad, Rangareddy, Telangana 501218", landmark: "Opp. Indra Hospital, Sidenti, Shamshabad", slug: "shamshabad-rythu-bazar" },
       { name: "Chevella Rythu Bazar", location: "846Q+7X6, Chevella, Telangana 501503", landmark: "Chevella", slug: "chevella-rythu-bazar" },
       { name: "Vanasthalipuram Rythu Bazar", location: "Vanasthalipuram, Hyderabad – 500070, Rangareddy", landmark: "Vanasthalipuram Main Road", slug: "vanasthalipuram-rythu-bazar" }
     ]
