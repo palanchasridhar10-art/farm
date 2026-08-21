@@ -5,7 +5,7 @@ let historyChart = null;
 let forecastChart = null;
 
 // ─── OFFICIAL TELANGANA RYTHU BAZARS METADATA & AREAS ───
-// Updated with exact market names, addresses & landmarks (district-wise)
+// Updated with exact market names, addresses & landmarks (district-wise, deduplicated)
 const DISTRICT_RYTHU_BAZARS = {
   "adilabad": {
     area: "Gandhi Chowk, Mahalaxmiwada",
@@ -37,19 +37,6 @@ const DISTRICT_RYTHU_BAZARS = {
     location: "NGO Colony Road, Depo Road, Near Old Bus Depot, Hanamkonda, Ramnagar, Warangal, Telangana 506001",
     landmark: "Near Old Bus Depot, Ramnagar",
     slug: "hanamkonda-rythu-bazar",
-    markets: [
-      { name: "Enumamula Rythu Bazar / Grain Market", location: "Sundaraiah Nagar, Grain Market, Enumamula, Warangal, Telangana 506006", landmark: "Enumamula Grain Market", slug: "enumamula-rythu-bazar-grain-market" },
-      { name: "Balasamudram Rythu Bazar", location: "2H45+6J6, Balasamudram, Hanamkonda, Telangana 506001", landmark: "Balasamudram", slug: "balasamudram-rythu-bazar" },
-      { name: "Hanamkonda Rythu Bazar", location: "NGO Colony Road, Depo Road, Near Old Bus Depot, Hanamkonda, Ramnagar, Warangal, Telangana 506001", landmark: "Near Old Bus Depot, Ramnagar", slug: "hanamkonda-rythu-bazar" }
-    ]
-  },
-  "warangal": {
-    area: "Enumamula, Warangal",
-    display: "📍 Enumamula — Grain Market, Warangal",
-    name: "Enumamula Rythu Bazar / Grain Market",
-    location: "Sundaraiah Nagar, Grain Market, Enumamula, Warangal, Telangana 506006",
-    landmark: "Enumamula Grain Market",
-    slug: "enumamula-rythu-bazar-grain-market",
     markets: [
       { name: "Enumamula Rythu Bazar / Grain Market", location: "Sundaraiah Nagar, Grain Market, Enumamula, Warangal, Telangana 506006", landmark: "Enumamula Grain Market", slug: "enumamula-rythu-bazar-grain-market" },
       { name: "Balasamudram Rythu Bazar", location: "2H45+6J6, Balasamudram, Hanamkonda, Telangana 506001", landmark: "Balasamudram", slug: "balasamudram-rythu-bazar" },
@@ -189,7 +176,8 @@ const DISTRICT_RYTHU_BAZARS = {
     slug: "mahabubnagar-rythu-bazar",
     markets: [
       { name: "Mahabubnagar Rythu Bazar", location: "PXRR+Q5Q, Ramaiah Bowli, Mahbubnagar, Telangana 509001", landmark: "Ramaiah Bowli", slug: "mahabubnagar-rythu-bazar" },
-      { name: "Jadcherla Vegetable Market", location: "Shop No. 26, Vegetable Market, Jadcherla, Badepalle, Telangana 509301", landmark: "Jadcherla Vegetable Market", slug: "jadcherla-vegetable-market" }
+      { name: "Jadcherla Vegetable Market", location: "Shop No. 26, Vegetable Market, Jadcherla, Badepalle, Telangana 509301", landmark: "Jadcherla Vegetable Market", slug: "jadcherla-vegetable-market" },
+      { name: "Badepalle Rythu Bazar", location: "Q43W+89M, Badepalle, Jadcherla, Telangana 509301", landmark: "Badepalle, Jadcherla", slug: "badepalle-rythu-bazar" }
     ]
   },
   "mancherial": {
@@ -227,7 +215,7 @@ const DISTRICT_RYTHU_BAZARS = {
     slug: "malkajgiri-rythu-bazar",
     markets: [
       { name: "Malkajgiri Rythu Bazar", location: "CGXG+XPR, Indira Nehru Nagar, Mallikarjuna Nagar, Malkajgiri, Secunderabad, Telangana 500047", landmark: "Indira Nehru Nagar, Malkajgiri", slug: "malkajgiri-rythu-bazar" },
-      { name: "Gudimalkapur Vegetable Market", location: "Vegetable Market, Alluri Sitarama Raju Nagar, Kanaka Durga Colony, Gudimalkapur, Hyderabad, Telangana 500006", landmark: "Gudimalkapur Vegetable Market", slug: "gudimalkapur-vegetable-market-medchal" }
+      { name: "Bowenpally Rythu Bazar", location: "Bowenpally / Secunderabad Area, Medchal–Malkajgiri, Telangana 500011", landmark: "Bowenpally Market Area", slug: "bowenpally-rythu-bazar" }
     ]
   },
   "mulugu": {
@@ -246,6 +234,7 @@ const DISTRICT_RYTHU_BAZARS = {
     display: "📍 Nagarkurnool Town — Rythu Bazar",
     name: "Rythu Bazar, Nagarkurnool town",
     location: "Nagarkurnool town, Nagarkurnool District",
+    landmark: "Nagarkurnool town",
     slug: "rythu-bazar-nagarkurnool-town",
     markets: [
       { name: "Rythu Bazar, Nagarkurnool town", location: "Nagarkurnool town, Nagarkurnool District", landmark: "Nagarkurnool town", slug: "rythu-bazar-nagarkurnool-town" }
@@ -337,8 +326,8 @@ const DISTRICT_RYTHU_BAZARS = {
     slug: "shamshabad-rythu-bazar",
     markets: [
       { name: "Shamshabad Rythu Bazar", location: "797V+X7H, National Highway 7, Shamshabad, Hyderabad, Telangana 501218", landmark: "National Highway 7, Shamshabad", slug: "shamshabad-rythu-bazar" },
-      { name: "Badepalle Rythu Bazar", location: "Q43W+89M, Badepalle, Telangana 509301", landmark: "Badepalle", slug: "badepalle-rythu-bazar" },
-      { name: "Chevella Rythu Bazar", location: "846Q+7X6, Chevella, Telangana 501503", landmark: "Chevella", slug: "chevella-rythu-bazar" }
+      { name: "Chevella Rythu Bazar", location: "846Q+7X6, Chevella, Telangana 501503", landmark: "Chevella", slug: "chevella-rythu-bazar" },
+      { name: "Vanasthalipuram Rythu Bazar", location: "Vanasthalipuram, Hyderabad – 500070, Rangareddy", landmark: "Vanasthalipuram Main Road", slug: "vanasthalipuram-rythu-bazar" }
     ]
   },
   "sangareddy": {
@@ -396,6 +385,7 @@ const DISTRICT_RYTHU_BAZARS = {
     display: "📍 Wanaparthy Town — Rythu Bazar",
     name: "Rythu Bazar, Wanaparthy town",
     location: "Wanaparthy town, Wanaparthy District",
+    landmark: "Wanaparthy town",
     slug: "rythu-bazar-wanaparthy-town",
     markets: [
       { name: "Rythu Bazar, Wanaparthy town", location: "Wanaparthy town, Wanaparthy District", landmark: "Wanaparthy town", slug: "rythu-bazar-wanaparthy-town" }
@@ -460,17 +450,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function updateActiveBanner() {
   const dSlug = selDistrict.value;
-  const selectedText = selMarket.options[selMarket.selectedIndex]?.text || '';
+  const selectedSlug = selMarket.value;
+  const selectedText = selMarket.options[selMarket.selectedIndex]?.text?.replace(/^[📍🏢]\s*/, '') || '';
   const meta = DISTRICT_RYTHU_BAZARS[dSlug];
+  const matchedMarket = meta?.markets?.find(m => m.slug === selectedSlug || m.name === selectedText);
 
   const titleEl = document.getElementById('bazar-banner-title');
   const addrEl  = document.getElementById('bazar-banner-address');
 
   if (titleEl) {
-    titleEl.textContent = meta ? `${meta.name} (${meta.area})` : (selectedText || 'Rythu Bazar');
+    if (matchedMarket) {
+      titleEl.textContent = matchedMarket.name;
+    } else if (meta) {
+      titleEl.textContent = `${meta.name} (${meta.area})`;
+    } else {
+      titleEl.textContent = selectedText || 'Rythu Bazar';
+    }
   }
   if (addrEl) {
-    if (meta) {
+    if (matchedMarket && matchedMarket.location) {
+      addrEl.textContent = `📍 ${matchedMarket.location}`;
+    } else if (meta && meta.location) {
       addrEl.textContent = `📍 ${meta.location}`;
     } else {
       const dName = selDistrict.options[selDistrict.selectedIndex]?.text || dSlug;
